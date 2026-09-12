@@ -3,32 +3,26 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { ProductDetail } from "@/components/ProductDetail";
 import { getProductBySlug, productImagePath, products } from "@/data/products";
-import { locales } from "@/i18n/dictionaries";
-import { defaultLocale, isLocale, type Locale } from "@/i18n/routing";
+import { defaultLocale } from "@/i18n/routing";
 import { buildPageMetadata, productJsonLd } from "@/lib/seo";
 
-type Props = { params: Promise<{ locale: string; slug: string }> };
+type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return locales
-    .filter((locale) => locale !== defaultLocale)
-    .flatMap((locale) =>
-      products.map((product) => ({ locale, slug: product.slug })),
-    );
+  return products.map((product) => ({ slug: product.slug }));
 }
 
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale: raw, slug } = await params;
-  const locale: Locale = isLocale(raw) ? raw : defaultLocale;
+  const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) return {};
 
-  const title = product.name[locale];
-  const description = product.description[locale];
+  const title = product.name[defaultLocale];
+  const description = product.description[defaultLocale];
   return buildPageMetadata({
-    locale,
+    locale: defaultLocale,
     path: `/products/${product.slug}`,
     title,
     description,
@@ -38,8 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Page({ params }: Props) {
-  const { locale: raw, slug } = await params;
-  const locale: Locale = isLocale(raw) ? raw : defaultLocale;
+  const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) notFound();
 
@@ -47,10 +40,10 @@ export default async function Page({ params }: Props) {
     <>
       <JsonLd
         data={productJsonLd({
-          locale,
+          locale: defaultLocale,
           slug: product.slug,
-          name: product.name[locale],
-          description: product.description[locale],
+          name: product.name[defaultLocale],
+          description: product.description[defaultLocale],
           sku: product.sku,
         })}
       />
