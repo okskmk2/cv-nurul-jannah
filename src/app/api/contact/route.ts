@@ -1,3 +1,4 @@
+import Cloudflare from "cloudflare";
 import { NextResponse } from "next/server";
 import {
   INQUIRY_TO,
@@ -62,7 +63,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    await sendInquiryEmail(parsed.data, siteOrigin(req));
+    await sendInquiryEmail(parsed.data);
   } catch (error) {
     console.error("contact inquiry email failed", error);
     return NextResponse.json(
@@ -74,120 +75,27 @@ export async function POST(req: Request) {
   return NextResponse.json({ ok: true });
 }
 
-const SITE_ORIGIN = "https://cvnuruljannah.com";
+const CLOUDFLARE_ACCOUNT_ID = "025ca3e44ac0979bc6ce635395d5bd6b";
 
-function siteOrigin(req: Request): string {
-  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
-  if (fromEnv) return fromEnv;
-
-  const host = req.headers.get("x-forwarded-host") || req.headers.get("host");
-  if (host && !host.startsWith("localhost") && !host.startsWith("127.0.0.1")) {
-    const proto = req.headers.get("x-forwarded-proto") || "https";
-    return `${proto}://${host}`;
-  }
-
-  return SITE_ORIGIN;
-}
-
-async function sendInquiryEmail(data: ContactInquiry, origin: string) {
-  const to = process.env.INQUIRY_TO?.trim() || INQUIRY_TO;
-  const subject = inquirySubject(data);
-  const text = inquiryText(data);
-  const html = inquiryHtml(data);
-
-  if (process.env.RESEND_API_KEY) {
-    await sendWithResend({ to, subject, text, html, replyTo: data.email });
-    return;
-  }
-
-  await sendWithFormSubmit({ to, subject, data, text, origin });
-}
-
-async function sendWithResend({
-  to,
-  subject,
-  text,
-  html,
-  replyTo,
-}: {
-  to: string;
-  subject: string;
-  text: string;
-  html: string;
-  replyTo: string;
-}) {
-  const from =
-    process.env.RESEND_FROM?.trim() ||
-    "CV. Nurul Jannah <beth.t@example.com>";
-
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      reply_to: replyTo,
-      subject,
-      text,
-      html,
-    }),
+async function sendInquiryEmail(data: ContactInquiry) {
+  const client = new Cloudflare({
+    apiToken: process.env.CLOUDFLARE_API_TOKEN,
   });
 
-  if (!res.ok) {
-    const detail = await res.text().catch(() => "");
-    throw new Error(`Resend failed (${res.status}): ${detail}`);
-  }
-}
-
-async function sendWithFormSubmit({
-  to,
-  subject,
-  data,
-  text,
-  origin,
-}: {
-  to: string;
-  subject: string;
-  data: ContactInquiry;
-  text: string;
-  origin: string;
-}) {
-
-  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Origin: origin,
-      Referer: `${origin}/contact`,
-    },
-    body: JSON.stringify({
-      _subject: subject,
-      _template: "table",
-      _captcha: "false",
+  const response = await client.emailSending.send({
+    account_id: CLOUDFLARE_ACCOUNT_ID,
+    from: {
+      address: data.email,
       name: data.tradePerson || data.company,
-      email: data.email,
-      message: text,
-      company: data.company,
-      phone: data.contactInfo,
-    }),
+    },
+    to: INQUIRY_TO,
+    subject: inquirySubject(data),
+    html: inquiryHtml(data),
+    text: inquiryText(data),
   });
 
-  const body = (await res.json().catch(() => null)) as
-    | { success?: boolean | string; message?: string }
-    | null;
-
-  const message = body?.message ?? "";
-  const needsActivation = /activat/i.test(message);
-  const success =
-    body?.success === true ||
-    body?.success === "true" ||
-    needsActivation;
-
-  if (!success) {
-    throw new Error(message || `FormSubmit failed (${res.status})`);
+  const accepted = response.delivered.length + response.queued.length;
+  if (response.permanent_bounces.includes(INQUIRY_TO) && accepted === 0) {
+    throw new Error("Cloudflare Email API bounced export@cvnuruljannah.com");
   }
 }
