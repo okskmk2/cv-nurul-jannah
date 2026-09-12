@@ -49,7 +49,7 @@ const en: Dict = {
   "home.market.euSub": "EN · EUR + USD",
   "expo.badge": "Trade Expo Indonesia 2026",
   "expo.title": "Meet us at Trade Expo Indonesia 2026",
-  "expo.dates": "14–18 October 2026 · ICE BSD City",
+  "expo.dates": "14-18 October 2026 · ICE BSD City",
   "expo.body":
     "Buyer Support requires MoU / LoI with an Indonesian partner plus attendance at KOTRA Business Matching. Connect with CV. Nurul Jannah for moringa / agri-food matching.",
   "expo.cta": "Contact for matching",
