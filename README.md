@@ -50,7 +50,19 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000).
 
 ```bash
-npm run build   # production build
-npm run start   # serve production build
-npm run lint    # ESLint
+npm run build     # OpenNext / Cloudflare Worker build
+npm run preview   # serve the Worker locally (workerd)
+npm run deploy    # build and deploy to Cloudflare Workers
+npm run lint      # ESLint
 ```
+
+## Deploy (Cloudflare Workers)
+
+This app deploys with `@opennextjs/cloudflare`. In Workers Builds:
+
+| Setting | Value |
+| --- | --- |
+| Build command | `npm run build` (runs `opennextjs-cloudflare build`) |
+| Deploy command | `npx wrangler deploy` or `npx opennextjs-cloudflare deploy` |
+
+Do not use `next build` as the CI build command. Wrangler then looks for `.open-next/.build/open-next.config.edge.mjs` and fails with *Could not find compiled Open Next config*.
