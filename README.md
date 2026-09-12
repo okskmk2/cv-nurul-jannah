@@ -68,7 +68,7 @@ npm run lint      # astro check
 | Build command | `npm run build` (`astro build`) |
 | Deploy command | `npx wrangler deploy` |
 
-Do not use `next build` or OpenNext. Wrangler `main` is `dist/_worker.js`.
+Do not use `next build` or OpenNext. Wrangler `main` is `dist/_worker.js/index.js`. `public/.assetsignore` keeps `_worker.js` and `_routes.json` out of the public asset upload.
 
 Keep the Worker `send_email` binding named `EMAIL`.
 
