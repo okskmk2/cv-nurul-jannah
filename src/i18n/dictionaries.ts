@@ -26,11 +26,11 @@ const en: Dict = {
   "hero.badge": "CV. Nurul Jannah · Moringga",
   "hero.title": "Madura Moringa Foods for B2B & Export Partners",
   "hero.subtitle":
-    "Moringga kelor products from Sumenep, Madura — coffee, tea, powder, crackers, noodles, and sticks. Organic, Halal, and PIRT labeled. Serving SEA, Middle East, and Europe.",
+    "Moringga kelor products from Sumenep, Madura — coffee, tea, powder, crackers, noodles, sticks, and oil. Organic, Halal, and PIRT labeled. Serving SEA, Middle East, and Europe.",
   "hero.browse": "Browse Products",
   "hero.quote": "Request Quote",
   "hero.panelLabel": "Moringga lineup",
-  "hero.panelProducts": "Coffee · Tea · Crackers · Powder · Noodle · Stick",
+  "hero.panelProducts": "Coffee · Tea · Crackers · Powder · Noodle · Stick · Oil",
   "hero.panelTrust": "Organic · Halal · PIRT · Zero Waste",
   "trust.organic": "Organic",
   "trust.halal": "Halal",
@@ -38,7 +38,7 @@ const en: Dict = {
   "trust.zerowaste": "Zero Waste",
   "home.featured": "Moringga Products",
   "home.featuredSub":
-    "Six kelor / moringa foods from our Sumenep production — ready for distributors, importers, and retail partners.",
+    "Seven kelor / moringa products from our Sumenep production — ready for distributors, importers, and retail partners.",
   "home.viewAll": "View all products",
   "home.markets": "Markets We Serve",
   "home.market.sea": "Southeast Asia",
@@ -55,7 +55,7 @@ const en: Dict = {
   "expo.cta": "Contact for matching",
   "products.title": "Products",
   "products.subtitle":
-    "Moringga kelor catalog — coffee, tea, crackers, powder, noodles, and sticks from Madura.",
+    "Moringga kelor catalog — coffee, tea, crackers, powder, noodles, sticks, and oil from Madura.",
   "products.inquire": "Inquire",
   "products.view": "View",
   "products.back": "Back to products",
@@ -99,7 +99,7 @@ const en: Dict = {
   "trust.missionBody":
     "Vision: help preserve Madurese local wisdom, especially in Sumenep. Mission: a healthy Indonesia through nutrition revolution; plant kelor in community gardens; make kelor a daily nutrient intake.",
   "trust.capacity": "B2B Supply Highlights",
-  "trust.cap.1": "6 SKUs",
+  "trust.cap.1": "7 SKUs",
   "trust.cap.1Sub": "Moringga lineup",
   "trust.cap.2": "Zero Waste",
   "trust.cap.2Sub": "Production philosophy",
@@ -123,6 +123,40 @@ const en: Dict = {
     "Ask for product specs, certification details, and B2B packing options for Moringga kelor foods.",
   "trust.docsCta": "Request Documents",
   "trust.catalogCta": "Download Catalog",
+  "process.title": "From Harvest to Pack",
+  "process.subtitle":
+    "Kelor is grown with partner farms in Sumenep, then sorted, processed, dried, and packed in our hygienic line — a transparent harvest-to-pack process for B2B partners.",
+  "process.cta": "See origin & production",
+  "process.farm.title": "Kelor groves",
+  "process.farm.body":
+    "Moringa groves in Pakandangan Sangra, Bluto, Sumenep — the Madura origin of every Moringga product.",
+  "process.farm.alt":
+    "Kelor (moringa) groves in Sumenep, Madura, with village terracotta roofs beyond the trees",
+  "process.receive.title": "Fresh-leaf receiving",
+  "process.receive.body":
+    "Harvested kelor leaves arrive the same day and are sorted under cover before they enter the hygienic line.",
+  "process.receive.alt":
+    "Farm workers sorting freshly harvested kelor leaves into crates under a village canopy",
+  "process.sort.title": "Hygienic leaf sorting",
+  "process.sort.body":
+    "Trained staff in food-grade attire sort leaves by hand, keeping only clean, intact foliage.",
+  "process.sort.alt":
+    "Workers in light-blue hygienic uniforms sorting moringa leaves in red crates",
+  "process.process.title": "Stainless processing",
+  "process.process.body":
+    "Leaves are processed in stainless-steel vessels to protect color, aroma, and nutrition.",
+  "process.process.alt":
+    "Hygienic kitchen with stainless-steel pots of green moringa puree",
+  "process.dry.title": "Spray drying",
+  "process.dry.body":
+    "A closed stainless spray-dry system turns puree into stable, export-ready moringa powder.",
+  "process.dry.alt":
+    "Workers filling steel drums with moringa powder beside a stainless spray dryer",
+  "process.pack.title": "Weighing & packing",
+  "process.pack.body":
+    "Each batch is weighed into foil pouches under hygienic packing — ready for B2B shipment.",
+  "process.pack.alt":
+    "Workers weighing green moringa powder into silver foil pouches on digital scales",
   "contact.title": "B2B / Trade Inquiry",
   "contact.subtitle":
     "Aligned with our trade questionnaire — company profile, Indonesia import history, challenges, and Business Matching interest.",
@@ -181,10 +215,10 @@ const en: Dict = {
   "common.whatsappValue": "+62 812 0000 0000",
   "meta.homeTitle": "CV. Nurul Jannah · Moringga | Madura Moringa / Kelor",
   "meta.homeDesc":
-    "CV. Nurul Jannah — Moringga kelor foods from Sumenep, Madura: coffee, tea, powder, crackers, noodles, sticks. Organic, Halal, PIRT. B2B & export for SEA, Middle East, Europe.",
+    "CV. Nurul Jannah — Moringga kelor products from Sumenep, Madura: coffee, tea, powder, crackers, noodles, sticks, oil. Organic, Halal, PIRT. B2B & export for SEA, Middle East, Europe.",
   "meta.productsTitle": "Moringa / Kelor Products",
   "meta.productsDesc":
-    "Moringga kelor catalog from Sumenep, Madura — coffee, tea, crackers, powder, noodles, and sticks. Organic, Halal, PIRT. B2B export.",
+    "Moringga kelor catalog from Sumenep, Madura — coffee, tea, crackers, powder, noodles, sticks, and oil. Organic, Halal, PIRT. B2B export.",
   "meta.trustTitle": "Trust & Certifications",
   "meta.trustDesc":
     "Organic, Halal, PIRT, and optional COA. Madura origin, Zero Waste production, and B2B export track record — CV. Nurul Jannah.",
@@ -207,11 +241,11 @@ const id: Dict = {
   "hero.badge": "CV. Nurul Jannah · Moringga",
   "hero.title": "Pangan Kelor Madura untuk Mitra B2B & Ekspor",
   "hero.subtitle":
-    "Produk kelor Moringga dari Sumenep, Madura — kopi, teh, powder, krupuk, mie, dan stick. Berlabel Organik, Halal, dan PIRT. Melayani SEA, Timur Tengah, dan Eropa.",
+    "Produk kelor Moringga dari Sumenep, Madura — kopi, teh, powder, krupuk, mie, stick, dan minyak. Berlabel Organik, Halal, dan PIRT. Melayani SEA, Timur Tengah, dan Eropa.",
   "hero.browse": "Lihat Produk",
   "hero.quote": "Minta Penawaran",
   "hero.panelLabel": "Jajaran Moringga",
-  "hero.panelProducts": "Kopi · Teh · Krupuk · Powder · Mie · Stick",
+  "hero.panelProducts": "Kopi · Teh · Krupuk · Powder · Mie · Stick · Minyak",
   "hero.panelTrust": "Organik · Halal · PIRT · Zero Waste",
   "trust.organic": "Organik",
   "trust.halal": "Halal",
@@ -219,7 +253,7 @@ const id: Dict = {
   "trust.zerowaste": "Zero Waste",
   "home.featured": "Produk Moringga",
   "home.featuredSub":
-    "Enam pangan kelor / moringa dari produksi Sumenep — siap untuk distributor, importir, dan mitra ritel.",
+    "Tujuh produk kelor / moringa dari produksi Sumenep — siap untuk distributor, importir, dan mitra ritel.",
   "home.viewAll": "Lihat semua produk",
   "home.markets": "Pasar yang Kami Layani",
   "home.market.sea": "Asia Tenggara",
@@ -236,7 +270,7 @@ const id: Dict = {
   "expo.cta": "Kontak untuk matching",
   "products.title": "Produk",
   "products.subtitle":
-    "Katalog kelor Moringga — kopi, teh, krupuk, powder, mie, dan stick dari Madura.",
+    "Katalog kelor Moringga — kopi, teh, krupuk, powder, mie, stick, dan minyak dari Madura.",
   "products.inquire": "Tanya",
   "products.view": "Lihat",
   "products.back": "Kembali ke produk",
@@ -280,7 +314,7 @@ const id: Dict = {
   "trust.missionBody":
     "Visi: membantu melestarikan kearifan lokal masyarakat Madura, khususnya Kabupaten Sumenep. Misi: Indonesia sehat melalui revolusi nutrisi; gerakan menanam kelor di kebun masyarakat; menjadikan kelor sebagai asupan nutrisi harian.",
   "trust.capacity": "Sorotan Pasokan B2B",
-  "trust.cap.1": "6 SKU",
+  "trust.cap.1": "7 SKU",
   "trust.cap.1Sub": "Jajaran Moringga",
   "trust.cap.2": "Zero Waste",
   "trust.cap.2Sub": "Filosofi produksi",
@@ -304,6 +338,40 @@ const id: Dict = {
     "Minta spesifikasi produk, detail sertifikasi, dan opsi packing B2B untuk pangan kelor Moringga.",
   "trust.docsCta": "Minta Dokumen",
   "trust.catalogCta": "Unduh Katalog",
+  "process.title": "Dari Panen sampai Kemas",
+  "process.subtitle":
+    "Kelor ditanam bersama petani mitra di Sumenep, lalu disortir, diolah, dikeringkan, dan dikemas di jalur higienis kami — proses panen–kemas yang transparan untuk mitra B2B.",
+  "process.cta": "Lihat asal & produksi",
+  "process.farm.title": "Kebun kelor",
+  "process.farm.body":
+    "Kebun kelor di Pakandangan Sangra, Bluto, Sumenep — asal Madura setiap produk Moringga.",
+  "process.farm.alt":
+    "Kebun kelor (moringa) di Sumenep, Madura, dengan atap terakota desa di belakang pohon",
+  "process.receive.title": "Penerimaan daun segar",
+  "process.receive.body":
+    "Daun kelor panen tiba di hari yang sama dan disortir di naungan sebelum masuk jalur higienis.",
+  "process.receive.alt":
+    "Pekerja menyortir daun kelor segar ke dalam keranjang di bawah kanopi desa",
+  "process.sort.title": "Sortir daun higienis",
+  "process.sort.body":
+    "Staf terlatih berpakaian food-grade menyortir daun secara manual, hanya menyisakan daun utuh dan bersih.",
+  "process.sort.alt":
+    "Pekerja berseragam higienis biru muda menyortir daun kelor di keranjang merah",
+  "process.process.title": "Pengolahan stainless",
+  "process.process.body":
+    "Daun diolah dalam wadah stainless steel untuk menjaga warna, aroma, dan nutrisi.",
+  "process.process.alt":
+    "Dapur higienis dengan panci stainless berisi puree kelor hijau",
+  "process.dry.title": "Spray drying",
+  "process.dry.body":
+    "Sistem spray-dry stainless tertutup mengubah puree menjadi powder kelor yang stabil dan siap ekspor.",
+  "process.dry.alt":
+    "Pekerja mengisi drum baja dengan powder kelor di samping spray dryer stainless",
+  "process.pack.title": "Timbang & kemas",
+  "process.pack.body":
+    "Setiap batch ditimbang ke dalam pouches foil di ruang packing higienis — siap kirim B2B.",
+  "process.pack.alt":
+    "Pekerja menimbang powder kelor hijau ke dalam pouches foil perak di timbangan digital",
   "contact.title": "Permintaan B2B / Perdagangan",
   "contact.subtitle":
     "Selaras dengan kuesioner perdagangan — profil perusahaan, riwayat impor Indonesia, tantangan, dan minat Business Matching.",
@@ -360,10 +428,10 @@ const id: Dict = {
   "cta.sticky": "Minta penawaran B2B",
   "meta.homeTitle": "CV. Nurul Jannah · Moringga | Kelor Madura",
   "meta.homeDesc":
-    "CV. Nurul Jannah — pangan kelor Moringga dari Sumenep, Madura: kopi, teh, powder, krupuk, mie, stick. Organik, Halal, PIRT. B2B & ekspor ke SEA, Timur Tengah, Eropa.",
+    "CV. Nurul Jannah — produk kelor Moringga dari Sumenep, Madura: kopi, teh, powder, krupuk, mie, stick, minyak. Organik, Halal, PIRT. B2B & ekspor ke SEA, Timur Tengah, Eropa.",
   "meta.productsTitle": "Produk Kelor / Moringa",
   "meta.productsDesc":
-    "Katalog kelor Moringga dari Sumenep, Madura — kopi, teh, krupuk, powder, mie, dan stick. Organik, Halal, PIRT. Ekspor B2B.",
+    "Katalog kelor Moringga dari Sumenep, Madura — kopi, teh, krupuk, powder, mie, stick, dan minyak. Organik, Halal, PIRT. Ekspor B2B.",
   "meta.trustTitle": "Kepercayaan & Sertifikasi",
   "meta.trustDesc":
     "Organik, Halal, PIRT, dan COA opsional. Asal Madura, produksi Zero Waste, dan rekam jejak ekspor B2B — CV. Nurul Jannah.",
@@ -383,7 +451,7 @@ const ar: Dict = {
   "brand.tagline": "Moringga · صحة بعجائب الكيلور",
   "hero.title": "أغذية مورينجا مادورا لشركاء B2B والتصدير",
   "hero.subtitle":
-    "منتجات كيلور Moringga من سومينيب، مادورا — قهوة وشاي ومسحوق ورقائق ونودلز وعصي. عضوي وحلال وPIRT. نخدم جنوب شرق آسيا والشرق الأوسط وأوروبا.",
+    "منتجات كيلور Moringga من سومينيب، مادورا — قهوة وشاي ومسحوق ورقائق ونودلز وعصي وزيت. عضوي وحلال وPIRT. نخدم جنوب شرق آسيا والشرق الأوسط وأوروبا.",
   "hero.browse": "تصفح المنتجات",
   "hero.quote": "طلب عرض سعر",
   "products.title": "المنتجات",
@@ -398,13 +466,47 @@ const ar: Dict = {
   "contact.error":
     "تعذر إرسال الاستفسار. حاول مرة أخرى أو راسل export@cvnuruljannah.com.",
   "expo.title": "التقِ بنا في معرض التجارة الإندونيسي 2026",
+  "process.title": "من الحصاد إلى التعبئة",
+  "process.subtitle":
+    "يُزرع الكيلور مع مزارع شريكة في سومينيب، ثم يُفرز ويُعالج ويُجفف ويُعبأ في خطنا الصحي — عملية شفافة من الحصاد إلى التعبئة لشركاء B2B.",
+  "process.cta": "اطلع على المنشأ والإنتاج",
+  "process.farm.title": "بساتين الكيلور",
+  "process.farm.body":
+    "بساتين المورينجا في باكاندانغان سانغرا، بلوتو، سومينيب — منشأ مادورا لكل منتج Moringga.",
+  "process.farm.alt":
+    "بساتين الكيلور (المورينجا) في سومينيب، مادورا، مع أسطح قرميد القرية خلف الأشجار",
+  "process.receive.title": "استلام الأوراق الطازجة",
+  "process.receive.body":
+    "تصل أوراق الكيلور المحصودة في اليوم نفسه وتُفرز تحت مظلة قبل دخول الخط الصحي.",
+  "process.receive.alt":
+    "عمال يفرزون أوراق الكيلور الطازجة في صناديق تحت مظلة القرية",
+  "process.sort.title": "فرز صحي للأوراق",
+  "process.sort.body":
+    "طاقم مدرّب بملابس غذائية يفرز الأوراق يدوياً ويبقي فقط الأوراق النظيفة والسليمة.",
+  "process.sort.alt":
+    "عاملات بزي صحي أزرق فاتح يفرزن أوراق المورينجا في صناديق حمراء",
+  "process.process.title": "معالجة بالاستانلس",
+  "process.process.body":
+    "تُعالج الأوراق في أوعية من الفولاذ المقاوم للصدأ للحفاظ على اللون والرائحة والقيمة الغذائية.",
+  "process.process.alt":
+    "مطبخ صحي بأوانٍ من الاستانلس مليئة بهريس المورينجا الأخضر",
+  "process.dry.title": "التجفيف بالرش",
+  "process.dry.body":
+    "نظام تجفيف بالرش مغلق من الاستانلس يحوّل الهريس إلى مسحوق مورينجا مستقر وجاهز للتصدير.",
+  "process.dry.alt":
+    "عمال يملؤون براميل فولاذية بمسحوق المورينجا بجانب مجفف رذاذ من الاستانلس",
+  "process.pack.title": "الوزن والتعبئة",
+  "process.pack.body":
+    "يُوزن كل دفعة في أكياس رقائق تحت تعبئة صحية — جاهزة لشحن B2B.",
+  "process.pack.alt":
+    "عمال يزنون مسحوق المورينجا الأخضر في أكياس رقائق فضية على موازين رقمية",
   "cta.sticky": "اطلب عرض سعر B2B",
   "meta.homeTitle": "CV. Nurul Jannah · Moringga | مورينجا مادورا / كيلور",
   "meta.homeDesc":
-    "CV. Nurul Jannah — أغذية كيلور Moringga من سومينيب، مادورا: قهوة وشاي ومسحوق ورقائق ونودلز وعصي. عضوي وحلال وPIRT. تصدير B2B.",
+    "CV. Nurul Jannah — منتجات كيلور Moringga من سومينيب، مادورا: قهوة وشاي ومسحوق ورقائق ونودلز وعصي وزيت. عضوي وحلال وPIRT. تصدير B2B.",
   "meta.productsTitle": "منتجات المورينجا / الكيلور",
   "meta.productsDesc":
-    "كتالوج كيلور Moringga من سومينيب، مادورا — قهوة وشاي ورقائق ومسحوق ونودلز وعصي. عضوي وحلال وPIRT.",
+    "كتالوج كيلور Moringga من سومينيب، مادورا — قهوة وشاي ورقائق ومسحوق ونودلز وعصي وزيت. عضوي وحلال وPIRT.",
   "meta.trustTitle": "الثقة والشهادات",
   "meta.trustDesc":
     "عضوي وحلال وPIRT وCOA اختياري. أصل مادورا وإنتاج صفر نفايات وسجل تصدير B2B.",
@@ -427,11 +529,11 @@ const ko: Dict = {
   "hero.badge": "CV. Nurul Jannah · Moringga",
   "hero.title": "B2B·수출 파트너를 위한 마두라 모링가 식품",
   "hero.subtitle":
-    "수메넵, 마두라산 Moringga 켈로(모링가) 제품 — 커피, 차, 분말, 크래커, 면, 스틱. 유기농, 할랄, PIRT 표기. 동남아시아, 중동, 유럽에 공급합니다.",
+    "수메넵, 마두라산 Moringga 켈로(모링가) 제품 — 커피, 차, 분말, 크래커, 면, 스틱, 오일. 유기농, 할랄, PIRT 표기. 동남아시아, 중동, 유럽에 공급합니다.",
   "hero.browse": "제품 보기",
   "hero.quote": "견적 요청",
   "hero.panelLabel": "Moringga 라인업",
-  "hero.panelProducts": "커피 · 차 · 크래커 · 분말 · 면 · 스틱",
+  "hero.panelProducts": "커피 · 차 · 크래커 · 분말 · 면 · 스틱 · 오일",
   "hero.panelTrust": "유기농 · 할랄 · PIRT · 제로 웨이스트",
   "trust.organic": "유기농",
   "trust.halal": "할랄",
@@ -439,7 +541,7 @@ const ko: Dict = {
   "trust.zerowaste": "제로 웨이스트",
   "home.featured": "Moringga 제품",
   "home.featuredSub":
-    "수메넵 생산 모링가/켈로 식품 6종 — 유통사, 수입사, 리테일 파트너를 위한 제품입니다.",
+    "수메넵 생산 모링가/켈로 제품 7종 — 유통사, 수입사, 리테일 파트너를 위한 제품입니다.",
   "home.viewAll": "전체 제품 보기",
   "home.markets": "주요 시장",
   "home.market.sea": "동남아시아",
@@ -456,7 +558,7 @@ const ko: Dict = {
   "expo.cta": "매칭 문의",
   "products.title": "제품",
   "products.subtitle":
-    "Moringga 켈로 카탈로그 — 마두라산 커피, 차, 크래커, 분말, 면, 스틱.",
+    "Moringga 켈로 카탈로그 — 마두라산 커피, 차, 크래커, 분말, 면, 스틱, 오일.",
   "products.inquire": "문의하기",
   "products.view": "자세히",
   "products.back": "제품 목록으로",
@@ -500,7 +602,7 @@ const ko: Dict = {
   "trust.missionBody":
     "비전: 마두라, 특히 수메넵의 지역 지혜를 지키는 데 기여합니다. 미션: 영양 혁명을 통한 건강한 인도네시아, 마을 텃밭에 켈로 심기, 켈로를 일상 영양 섭취로 만들기.",
   "trust.capacity": "B2B 공급 하이라이트",
-  "trust.cap.1": "SKU 6종",
+  "trust.cap.1": "SKU 7종",
   "trust.cap.1Sub": "Moringga 라인업",
   "trust.cap.2": "제로 웨이스트",
   "trust.cap.2Sub": "생산 철학",
@@ -524,6 +626,40 @@ const ko: Dict = {
     "Moringga 켈로 식품의 제품 스펙, 인증 세부 정보, B2B 포장 옵션을 요청하세요.",
   "trust.docsCta": "서류 요청",
   "trust.catalogCta": "카탈로그 다운로드",
+  "process.title": "수확부터 포장까지",
+  "process.subtitle":
+    "켈로는 수메넵 협력 농가에서 재배된 뒤, 위생 라인에서 선별·가공·건조·포장됩니다. B2B 파트너를 위한 투명한 수확–포장 공정입니다.",
+  "process.cta": "원산지와 생산 보기",
+  "process.farm.title": "켈로 농장",
+  "process.farm.body":
+    "파칸당안 상그라, 블루토, 수메넵의 켈로 숲 — 모든 Moringga 제품의 마두라 원산지입니다.",
+  "process.farm.alt":
+    "마두라 수메넵의 켈로(모링가) 숲과 너머의 테라코타 지붕 마을",
+  "process.receive.title": "생잎 입고",
+  "process.receive.body":
+    "수확한 켈로 잎은 당일 입고되어, 위생 라인에 들어가기 전 차양 아래에서 선별됩니다.",
+  "process.receive.alt":
+    "마을 차양 아래 크레이트에 갓 수확한 켈로 잎을 선별하는 작업자들",
+  "process.sort.title": "위생 선별",
+  "process.sort.body":
+    "식품 위생복의 숙련 직원이 손으로 잎을 골라, 깨끗하고 온전한 잎만 남깁니다.",
+  "process.sort.alt":
+    "연청색 위생복을 입은 작업자들이 빨간 크레이트에서 모링가 잎을 선별하는 모습",
+  "process.process.title": "스테인리스 가공",
+  "process.process.body":
+    "색·향·영양을 지키도록 스테인리스 용기에 잎을 가공합니다.",
+  "process.process.alt":
+    "초록 모링가 퓨레가 담긴 스테인리스 솥이 있는 위생 가공실",
+  "process.dry.title": "분무 건조",
+  "process.dry.body":
+    "밀폐형 스테인리스 분무 건조 설비로 퓨레를 수출용 모링가 분말로 만듭니다.",
+  "process.dry.alt":
+    "스테인리스 분무 건조기 옆에서 모링가 분말을 드럼에 담는 작업자들",
+  "process.pack.title": "계량 및 포장",
+  "process.pack.body":
+    "각 배치는 위생 포장실에서 포일 파우치에 계량되어 B2B 출하 준비를 마칩니다.",
+  "process.pack.alt":
+    "디지털 저울 위에서 초록 모링가 분말을 은색 포일 파우치에 계량하는 작업자들",
   "contact.title": "B2B / 무역 문의",
   "contact.subtitle":
     "무역 설문과 맞춰 회사 소개, 인도네시아 수입 이력, 과제, 비즈니스 매칭 관심을 남겨 주세요.",
@@ -580,10 +716,10 @@ const ko: Dict = {
   "cta.sticky": "B2B 견적 요청",
   "meta.homeTitle": "CV. Nurul Jannah · Moringga | 마두라 모링가 / 켈로",
   "meta.homeDesc":
-    "CV. Nurul Jannah — 수메넵·마두라산 Moringga 켈로 식품: 커피, 차, 분말, 크래커, 면, 스틱. 유기농, 할랄, PIRT. 동남아·중동·유럽 B2B 수출.",
+    "CV. Nurul Jannah — 수메넵·마두라산 Moringga 켈로 제품: 커피, 차, 분말, 크래커, 면, 스틱, 오일. 유기농, 할랄, PIRT. 동남아·중동·유럽 B2B 수출.",
   "meta.productsTitle": "모링가 / 켈로 제품",
   "meta.productsDesc":
-    "수메넵·마두라산 Moringga 켈로 카탈로그 — 커피, 차, 크래커, 분말, 면, 스틱. 유기농, 할랄, PIRT. B2B 수출.",
+    "수메넵·마두라산 Moringga 켈로 카탈로그 — 커피, 차, 크래커, 분말, 면, 스틱, 오일. 유기농, 할랄, PIRT. B2B 수출.",
   "meta.trustTitle": "신뢰와 인증",
   "meta.trustDesc":
     "유기농, 할랄, PIRT, 선택 COA. 마두라 원산지, 제로 웨이스트 생산, B2B 수출 실적 — CV. Nurul Jannah.",

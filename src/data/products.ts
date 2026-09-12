@@ -173,6 +173,32 @@ export const products: Product[] = [
       ko: "현대 유통 및 커뮤니티 채널을 위한 간편한 모링가 스틱 스낵.",
     },
   },
+  {
+    id: "7",
+    slug: "moringa-oil",
+    name: {
+      en: "Moringa Oil",
+      id: "Minyak Kelor",
+      ar: "زيت المورينجا",
+      ko: "모링가 오일",
+    },
+    category: "moringa",
+    form: {
+      en: "30ml glass bottle",
+      id: "Botol kaca 30ml",
+      ar: "زجاجة زجاج 30 مل",
+      ko: "30ml 유리병",
+    },
+    sku: "MRG-OIL",
+    moq: "100 bottle",
+    featured: true,
+    description: {
+      en: "Madura kelor (moringa) oil in 30ml glass bottles — for retail, wellness, and private-label partners.",
+      id: "Minyak kelor Madura dalam botol kaca 30ml — untuk mitra ritel, wellness, dan kemasan private label.",
+      ar: "زيت كيلور مادورا في زجاجات 30 مل — لشركاء التجزئة والعافية والعلامة الخاصة.",
+      ko: "30ml 유리병에 담긴 마두라 켈로(모링가) 오일 — 리테일, 웰니스, 프라이빗 라벨 파트너용.",
+    },
+  },
 ];
 
 export const categoryLabels: Record<ProductCategory | "all", LocalizedText> = {
