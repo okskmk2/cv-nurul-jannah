@@ -1,0 +1,48 @@
+@import "@fontsource/geist-sans/400.css";
+@import "@fontsource/geist-sans/600.css";
+@import "@fontsource/geist-sans/700.css";
+@import "@fontsource/geist-sans/800.css";
+@import "@fontsource/geist-mono/400.css";
+@import "tailwindcss";
+
+:root {
+  /* Laporan Keberlanjutan 2023 cover palette */
+  --background: #f7f3e3;
+  --foreground: #1b4d2e;
+  --brand-cream: #f7f3e3;
+  --brand-green: #2f8f45;
+  --brand-forest: #1b4d2e;
+  --brand-sage: #a8c99a;
+  --brand-leaf: #3d9b4a;
+  --brand-earth: #c4a35a;
+  --brand-muted: #4f6356;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-green: var(--brand-green);
+  --color-brand-forest: var(--brand-forest);
+  --color-brand-sage: var(--brand-sage);
+  --color-brand-leaf: var(--brand-leaf);
+  --color-brand-earth: var(--brand-earth);
+  --color-brand-muted: var(--brand-muted);
+  --font-sans: "Geist Sans", "Malgun Gothic", "Apple SD Gothic Neo",
+    "Noto Sans KR", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brand-green) 30%, white);
+}

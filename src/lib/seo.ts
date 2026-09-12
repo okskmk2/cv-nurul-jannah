@@ -1,7 +1,19 @@
-import type { Metadata } from "next";
 import type { Locale } from "@/i18n/dictionaries";
 import { absoluteUrl, defaultLocale, locales } from "@/i18n/routing";
 import { SITE_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site";
+
+export type PageSeo = {
+  locale: Locale;
+  path: string;
+  title: string;
+  description: string;
+  absoluteTitle: boolean;
+  canonical: string;
+  languages: Record<string, string>;
+  ogLocale: string;
+  image: string;
+  imageAlt: string;
+};
 
 function ogLocale(locale: Locale): string {
   switch (locale) {
@@ -26,7 +38,7 @@ export function languageAlternates(path: string): Record<string, string> {
   return languages;
 }
 
-export function buildPageMetadata({
+export function buildPageSeo({
   locale,
   path,
   title,
@@ -42,44 +54,24 @@ export function buildPageMetadata({
   absoluteTitle?: boolean;
   image?: string;
   imageAlt?: string;
-}): Metadata {
-  const url = absoluteUrl(path, locale);
+}): PageSeo {
   const imageUrl = image
     ? image.startsWith("http")
       ? image
       : `${SITE_URL}${image}`
-    : `${SITE_URL}/opengraph-image`;
-  const ogImage = [
-    {
-      url: imageUrl,
-      width: 1200,
-      height: 630,
-      alt: imageAlt ?? title,
-    },
-  ];
+    : `${SITE_URL}/opengraph-image.png`;
 
   return {
-    title: absoluteTitle ? { absolute: title } : title,
+    locale,
+    path,
+    title,
     description,
-    alternates: {
-      canonical: url,
-      languages: languageAlternates(path),
-    },
-    openGraph: {
-      type: "website",
-      locale: ogLocale(locale),
-      url,
-      siteName: SITE_NAME,
-      title,
-      description,
-      images: ogImage,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [imageUrl],
-    },
+    absoluteTitle,
+    canonical: absoluteUrl(path, locale),
+    languages: languageAlternates(path),
+    ogLocale: ogLocale(locale),
+    image: imageUrl,
+    imageAlt: imageAlt ?? title,
   };
 }
 
@@ -125,7 +117,7 @@ export function productJsonLd({
     sku,
     image: `${SITE_URL}/products/${slug}.jpg`,
     url: absoluteUrl(path, locale),
-    brand: { "@type": "Brand", "name": "Moringga" },
+    brand: { "@type": "Brand", name: "Moringga" },
     manufacturer: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -133,5 +125,3 @@ export function productJsonLd({
     },
   };
 }
-
-

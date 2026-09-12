@@ -1,0 +1,39 @@
+---
+import ProductCard from "./ProductCard.astro";
+import { categoryLabels, products } from "@/data/products";
+import { t, type Locale } from "@/i18n/dictionaries";
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+---
+
+<section class="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+  <div class="mb-8 max-w-2xl">
+    <h1 class="text-3xl font-bold text-brand-forest md:text-4xl">
+      {t(locale, "products.title")}
+    </h1>
+    <p class="mt-3 text-brand-muted">{t(locale, "products.subtitle")}</p>
+  </div>
+  <div class="rounded-3xl bg-brand-cream/40 p-4 md:p-6">
+    <div>
+      <div class="flex flex-wrap gap-2">
+        <span
+          class="rounded-full px-4 py-2 text-sm font-semibold bg-brand-green text-white shadow-sm"
+        >
+          {categoryLabels.all[locale]}
+        </span>
+      </div>
+      <div class="mt-10">
+        {products.length === 0 ? (
+          <p class="text-brand-muted">{t(locale, "products.empty")}</p>
+        ) : (
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {products.map((p) => (
+              <ProductCard product={p} locale={locale} showMoq />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

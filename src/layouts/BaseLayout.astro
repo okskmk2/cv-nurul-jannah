@@ -1,0 +1,86 @@
+---
+import { Header } from "@/components/react/Header";
+import Footer from "@/components/Footer.astro";
+import JsonLd from "@/components/JsonLd.astro";
+import MobileStickyCta from "@/components/MobileStickyCta.astro";
+import { pathnameWithoutLocale } from "@/i18n/routing";
+import { organizationJsonLd, type PageSeo } from "@/lib/seo";
+import { SITE_NAME } from "@/lib/site";
+import "@/styles/global.css";
+
+type Props = PageSeo & {
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+};
+
+const {
+  locale,
+  path,
+  title,
+  description,
+  absoluteTitle,
+  canonical,
+  languages,
+  ogLocale,
+  image,
+  imageAlt,
+  jsonLd,
+} = Astro.props;
+
+const fullTitle = absoluteTitle ? title : `${title} | ${SITE_NAME}`;
+const google =
+  import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION ||
+  import.meta.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+const dir = locale === "ar" ? "rtl" : "ltr";
+const barePath = pathnameWithoutLocale(Astro.url.pathname) || path;
+const extraJsonLd = jsonLd
+  ? Array.isArray(jsonLd)
+    ? jsonLd
+    : [jsonLd]
+  : [];
+---
+
+<!doctype html>
+<html lang={locale} dir={dir} class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="moringa, kelor, Moringga, CV Nurul Jannah, Sumenep, Madura, B2B export, halal organic PIRT"
+    />
+    <link rel="canonical" href={canonical} />
+    {Object.entries(languages).map(([lang, href]) => (
+      <link rel="alternate" hreflang={lang} href={href} />
+    ))}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    {google && <meta name="google-site-verification" content={google} />}
+    <link rel="icon" href="/logo.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="shortcut icon" href="/logo.png" />
+  </head>
+  <body class="min-h-full flex flex-col antialiased pb-20 md:pb-0">
+    <JsonLd data={organizationJsonLd()} />
+    {extraJsonLd.map((data) => <JsonLd data={data} />)}
+    <Header client:load locale={locale} pathname={barePath} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer locale={locale} pathname={barePath} />
+    <MobileStickyCta locale={locale} />
+  </body>
+</html>

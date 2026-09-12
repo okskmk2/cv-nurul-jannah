@@ -1,22 +1,18 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cv-nurul-jannah",
-  "main": ".open-next/worker.js",
   "compatibility_date": "2026-09-11",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "compatibility_flags": ["nodejs_compat"],
   "keep_vars": true,
+  "main": "dist/_worker.js/index.js",
   "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
   },
   "observability": {
     "enabled": true
   },
-  "services": [
-    {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "cv-nurul-jannah"
-    }
-  ],
   "send_email": [{ "name": "EMAIL" }]
 }

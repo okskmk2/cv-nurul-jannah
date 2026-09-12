@@ -1,0 +1,46 @@
+---
+import ProductDetail from "@/components/ProductDetail.astro";
+import { getProductBySlug, productImagePath, products } from "@/data/products";
+import type { Locale } from "@/i18n/dictionaries";
+import { prefixedLocales } from "@/i18n/routing";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { buildPageSeo, productJsonLd } from "@/lib/seo";
+
+export function getStaticPaths() {
+  return prefixedLocales.flatMap((locale) =>
+    products.map((product) => ({
+      params: { locale, slug: product.slug },
+    })),
+  );
+}
+
+const locale = Astro.params.locale as Locale;
+const slug = Astro.params.slug!;
+const product = getProductBySlug(slug);
+if (!product) {
+  return Astro.rewrite("/404");
+}
+
+const title = product.name[locale];
+const description = product.description[locale];
+const seo = buildPageSeo({
+  locale,
+  path: `/products/${product.slug}`,
+  title,
+  description,
+  image: productImagePath(product.slug),
+  imageAlt: `${title} — Moringga kelor, CV. Nurul Jannah`,
+});
+---
+<BaseLayout
+  {...seo}
+  jsonLd={productJsonLd({
+    locale,
+    slug: product.slug,
+    name: title,
+    description,
+    sku: product.sku,
+  })}
+>
+  <ProductDetail product={product} locale={locale} />
+</BaseLayout>

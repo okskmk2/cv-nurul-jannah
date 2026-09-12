@@ -1,39 +1,29 @@
-import { NextResponse, type NextRequest } from "next/server";
-import { defaultLocale } from "@/i18n/routing";
+import { defineMiddleware } from "astro:middleware";
+import { defaultLocale, localeFromPathname } from "@/i18n/routing";
 
 const STATIC_EXT = /\.[a-z0-9]+$/i;
 
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+export const onRequest = defineMiddleware((context, next) => {
+  const { pathname } = context.url;
 
   if (
     pathname.startsWith("/api") ||
-    pathname.startsWith("/_next") ||
     pathname === "/robots.txt" ||
     pathname === "/sitemap.xml" ||
-    pathname === "/favicon.ico" ||
-    pathname.startsWith("/icon") ||
-    pathname.startsWith("/apple-icon") ||
-    pathname.startsWith("/opengraph-image") ||
-    pathname.startsWith("/twitter-image") ||
+    pathname === "/opengraph-image" ||
+    pathname === "/opengraph-image.png" ||
     STATIC_EXT.test(pathname)
   ) {
-    return NextResponse.next();
+    context.locals.locale = defaultLocale;
+    return next();
   }
 
   const parts = pathname.split("/").filter(Boolean);
-  const first = parts[0];
-
-  if (first === defaultLocale) {
-    const url = request.nextUrl.clone();
+  if (parts[0] === defaultLocale) {
     const rest = parts.slice(1).join("/");
-    url.pathname = rest ? `/${rest}` : "/";
-    return NextResponse.redirect(url);
+    return context.redirect(rest ? `/${rest}` : "/", 302);
   }
 
-  return NextResponse.next();
-}
-
-export const config = {
-  matcher: ["/((?!_next/static|_next/image).*)"],
-};
+  context.locals.locale = localeFromPathname(pathname);
+  return next();
+});

@@ -5,6 +5,15 @@ export { locales, type Locale };
 
 export const defaultLocale: Locale = "en";
 
+export const prefixedLocales = locales.filter(
+  (locale): locale is Exclude<Locale, "en"> => locale !== defaultLocale,
+);
+
+export function localeFromPathname(pathname: string): Locale {
+  const first = pathname.split("/").filter(Boolean)[0];
+  return isLocale(first) ? first : defaultLocale;
+}
+
 export function isLocale(value: string | undefined): value is Locale {
   return !!value && (locales as readonly string[]).includes(value);
 }

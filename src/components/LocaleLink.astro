@@ -1,0 +1,10 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { defaultLocale, localizedPath } from "@/i18n/routing";
+
+type Props = HTMLAttributes<"a"> & { href: string };
+const { href, ...rest } = Astro.props;
+const locale = Astro.locals.locale ?? defaultLocale;
+const localized = href.startsWith("/") ? localizedPath(href, locale) : href;
+---
+<a href={localized} {...rest}><slot /></a>

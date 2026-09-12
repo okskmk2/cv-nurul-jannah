@@ -1,0 +1,18 @@
+---
+import TrustPage from "@/components/TrustPage.astro";
+import { t } from "@/i18n/dictionaries";
+import { defaultLocale } from "@/i18n/routing";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { buildPageSeo } from "@/lib/seo";
+
+const locale = defaultLocale;
+const seo = buildPageSeo({
+  locale,
+  path: "/trust",
+  title: t(locale, "meta.trustTitle"),
+  description: t(locale, "meta.trustDesc"),
+});
+---
+<BaseLayout {...seo}>
+  <TrustPage locale={locale} />
+</BaseLayout>

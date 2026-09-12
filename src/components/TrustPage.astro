@@ -1,0 +1,175 @@
+---
+import LocaleLink from "./LocaleLink.astro";
+import { t, type Locale } from "@/i18n/dictionaries";
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+
+const certs = [
+  { title: t(locale, "trust.cert.organic"), desc: t(locale, "trust.cert.organicDesc") },
+  { title: t(locale, "trust.cert.halal"), desc: t(locale, "trust.cert.halalDesc") },
+  { title: t(locale, "trust.cert.pirt"), desc: t(locale, "trust.cert.pirtDesc") },
+  { title: t(locale, "trust.cert.coa"), desc: t(locale, "trust.cert.coaDesc") },
+];
+const caps = [
+  { title: t(locale, "trust.cap.1"), sub: t(locale, "trust.cap.1Sub") },
+  { title: t(locale, "trust.cap.2"), sub: t(locale, "trust.cap.2Sub") },
+  { title: t(locale, "trust.cap.3"), sub: t(locale, "trust.cap.3Sub") },
+  { title: t(locale, "trust.cap.4"), sub: t(locale, "trust.cap.4Sub") },
+];
+const tracks = [
+  { title: t(locale, "trust.track.1"), sub: t(locale, "trust.track.1Sub") },
+  { title: t(locale, "trust.track.2"), sub: t(locale, "trust.track.2Sub") },
+  { title: t(locale, "trust.track.3"), sub: t(locale, "trust.track.3Sub") },
+  { title: t(locale, "trust.track.4"), sub: t(locale, "trust.track.4Sub") },
+];
+const originPoints = [
+  t(locale, "trust.origin.1"),
+  t(locale, "trust.origin.2"),
+  t(locale, "trust.origin.3"),
+  t(locale, "trust.origin.4"),
+];
+const values = [
+  { title: t(locale, "trust.value.1"), sub: t(locale, "trust.value.1Sub") },
+  { title: t(locale, "trust.value.2"), sub: t(locale, "trust.value.2Sub") },
+  { title: t(locale, "trust.value.3"), sub: t(locale, "trust.value.3Sub") },
+  { title: t(locale, "trust.value.4"), sub: t(locale, "trust.value.4Sub") },
+];
+---
+
+<section class="bg-gradient-to-br from-brand-cream to-white">
+  <div class="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+    <h1 class="text-3xl font-bold text-brand-forest md:text-4xl">
+      {t(locale, "trust.title")}
+    </h1>
+    <p class="mt-3 max-w-2xl text-brand-muted">{t(locale, "trust.subtitle")}</p>
+  </div>
+</section>
+
+<section class="mx-auto max-w-6xl px-4 py-12 md:px-6">
+  <h2 class="mb-6 text-2xl font-bold text-brand-forest">
+    {t(locale, "trust.certs")}
+  </h2>
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {certs.map((c) => (
+      <div class="rounded-2xl border border-brand-sage/40 bg-white p-5 shadow-sm">
+        <div
+          class="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/15 text-brand-green font-bold"
+        >
+          ✓
+        </div>
+        <h3 class="font-bold text-brand-forest">{c.title}</h3>
+        <p class="mt-1 text-sm text-brand-muted">{c.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="bg-brand-cream/70">
+  <div class="mx-auto grid max-w-6xl items-center gap-8 px-4 py-12 md:grid-cols-2 md:px-6">
+    <div
+      class="min-h-[220px] rounded-3xl bg-gradient-to-br from-brand-green/90 to-brand-forest p-8 text-white shadow-md"
+    >
+      <p class="text-sm uppercase tracking-widest text-brand-sage">
+        {t(locale, "trust.originPanelLabel")}
+      </p>
+      <p class="mt-3 text-2xl font-bold">{t(locale, "trust.originPanelTitle")}</p>
+      <p class="mt-2 text-sm text-white/80">
+        {t(locale, "trust.originPanelSub")}
+      </p>
+    </div>
+    <div>
+      <h2 class="text-2xl font-bold text-brand-forest">
+        {t(locale, "trust.origin")}
+      </h2>
+      <p class="mt-3 text-brand-muted">{t(locale, "trust.originBody")}</p>
+      <ul class="mt-5 space-y-2">
+        {originPoints.map((item) => (
+          <li class="flex items-start gap-2 text-sm text-brand-forest">
+            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-6xl px-4 py-12 md:px-6">
+  <h2 class="mb-3 text-2xl font-bold text-brand-forest">
+    {t(locale, "trust.mission")}
+  </h2>
+  <p class="mb-8 max-w-3xl text-brand-muted">{t(locale, "trust.missionBody")}</p>
+  <h3 class="mb-4 text-lg font-bold text-brand-forest">
+    {t(locale, "trust.values")}
+  </h3>
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {values.map((v) => (
+      <div class="rounded-2xl border border-brand-sage/40 bg-white p-5 shadow-sm">
+        <p class="font-bold text-brand-green">{v.title}</p>
+        <p class="mt-1 text-sm text-brand-muted">{v.sub}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="mx-auto max-w-6xl px-4 py-12 md:px-6">
+    <h2 class="mb-6 text-2xl font-bold text-brand-forest">
+      {t(locale, "trust.capacity")}
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {caps.map((c) => (
+        <div
+          class="rounded-2xl border border-brand-sage/40 bg-brand-cream/50 p-5 text-center shadow-sm"
+        >
+          <p class="text-2xl font-bold text-brand-green">{c.title}</p>
+          <p class="mt-1 text-sm text-brand-muted">{c.sub}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="bg-brand-cream/50">
+  <div class="mx-auto max-w-6xl px-4 py-12 md:px-6">
+    <h2 class="text-2xl font-bold text-brand-forest">
+      {t(locale, "trust.track")}
+    </h2>
+    <p class="mt-2 max-w-2xl text-brand-muted">{t(locale, "trust.trackBody")}</p>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {tracks.map((item) => (
+        <div class="rounded-2xl bg-white p-5 border border-brand-sage/30 shadow-sm">
+          <h3 class="font-bold text-brand-forest">{item.title}</h3>
+          <p class="mt-1 text-sm text-brand-muted">{item.sub}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="bg-brand-sage/25">
+  <div class="mx-auto max-w-6xl px-4 py-14 text-center md:px-6">
+    <h2 class="text-2xl font-bold text-brand-forest md:text-3xl">
+      {t(locale, "trust.docsTitle")}
+    </h2>
+    <p class="mx-auto mt-3 max-w-xl text-brand-muted">
+      {t(locale, "trust.docsSub")}
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <LocaleLink
+        href="/contact"
+        class="rounded-lg bg-brand-green px-5 py-3 text-sm font-semibold text-white hover:bg-brand-forest"
+      >
+        {t(locale, "trust.docsCta")}
+      </LocaleLink>
+      <a
+        href="/catalog.pdf"
+        download="CV-Nurul-Jannah-Moringga-Catalog.pdf"
+        class="rounded-lg border-2 border-brand-green bg-white px-5 py-3 text-sm font-semibold text-brand-green hover:bg-white/80"
+      >
+        {t(locale, "trust.catalogCta")}
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,61 @@
+---
+import LocaleLink from "./LocaleLink.astro";
+import type { Product } from "@/data/products";
+import { productImagePath } from "@/data/products";
+import { t, type Locale } from "@/i18n/dictionaries";
+
+type Props = { product: Product; locale: Locale; showMoq?: boolean };
+const { product, locale, showMoq = false } = Astro.props;
+const name = product.name[locale];
+const image = productImagePath(product.slug);
+const alt = `${name} — Moringga kelor, CV. Nurul Jannah`;
+---
+
+<article
+  class="flex flex-col overflow-hidden rounded-2xl border border-brand-sage/40 bg-white shadow-sm transition hover:shadow-md"
+>
+  <LocaleLink href={`/products/${product.slug}`} class="block">
+    <div class="relative aspect-[4/3] overflow-hidden bg-brand-cream">
+      <img
+        src={image}
+        alt={alt}
+        width={800}
+        height={600}
+        class="h-full w-full object-cover"
+      />
+    </div>
+  </LocaleLink>
+  <div class="flex flex-1 flex-col p-4">
+    <h3 class="text-base font-semibold text-brand-forest">
+      <LocaleLink
+        href={`/products/${product.slug}`}
+        class="hover:text-brand-green"
+      >
+        {name}
+      </LocaleLink>
+    </h3>
+    <p class="mt-1 text-xs text-brand-muted">
+      {t(locale, "products.form")}: {product.form[locale]} · {t(locale, "products.sku")}:{" "}
+      {product.sku}
+    </p>
+    {showMoq && (
+      <p class="mt-2 text-sm font-medium text-brand-forest">
+        {t(locale, "products.moq")}: {product.moq}
+      </p>
+    )}
+    <div class="mt-auto flex gap-2 pt-4">
+      <LocaleLink
+        href={`/products/${product.slug}`}
+        class="flex-1 rounded-lg border border-brand-green py-2.5 text-center text-sm font-semibold text-brand-green hover:bg-brand-sage/20"
+      >
+        {t(locale, "products.view")}
+      </LocaleLink>
+      <LocaleLink
+        href={`/contact?product=${encodeURIComponent(product.name.en)}`}
+        class="flex-1 rounded-lg bg-brand-green py-2.5 text-center text-sm font-semibold text-white hover:bg-brand-forest"
+      >
+        {t(locale, "products.inquire")}
+      </LocaleLink>
+    </div>
+  </div>
+</article>

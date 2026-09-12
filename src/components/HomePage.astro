@@ -1,0 +1,155 @@
+---
+import LocaleLink from "./LocaleLink.astro";
+import ProductCard from "./ProductCard.astro";
+import { getFeaturedProducts } from "@/data/products";
+import { t, type Locale } from "@/i18n/dictionaries";
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+const featured = getFeaturedProducts();
+const badges = [
+  t(locale, "trust.organic"),
+  t(locale, "trust.halal"),
+  t(locale, "trust.pirt"),
+  t(locale, "trust.zerowaste"),
+];
+const markets = [
+  { title: t(locale, "home.market.sea"), sub: t(locale, "home.market.seaSub") },
+  { title: t(locale, "home.market.me"), sub: t(locale, "home.market.meSub") },
+  { title: t(locale, "home.market.eu"), sub: t(locale, "home.market.euSub") },
+];
+---
+
+<section class="bg-gradient-to-br from-brand-cream via-white to-brand-sage/25">
+  <div
+    class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:grid-cols-2 md:px-6 md:py-20"
+  >
+    <div>
+      <p
+        class="mb-3 inline-flex rounded-full bg-brand-green/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-green"
+      >
+        {t(locale, "hero.badge")}
+      </p>
+      <p class="mb-2 text-sm font-semibold text-brand-leaf">
+        {t(locale, "brand.theme")}
+      </p>
+      <h1
+        class="text-3xl font-bold leading-tight text-brand-forest sm:text-4xl lg:text-[2.6rem]"
+      >
+        {t(locale, "hero.title")}
+      </h1>
+      <p class="mt-4 max-w-xl text-base text-brand-muted md:text-lg">
+        {t(locale, "hero.subtitle")}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <LocaleLink
+          href="/products"
+          class="rounded-lg bg-brand-green px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-forest"
+        >
+          {t(locale, "hero.browse")}
+        </LocaleLink>
+        <LocaleLink
+          href="/contact"
+          class="rounded-lg border-2 border-brand-green bg-white px-5 py-3 text-sm font-semibold text-brand-green hover:bg-brand-sage/20"
+        >
+          {t(locale, "hero.quote")}
+        </LocaleLink>
+      </div>
+    </div>
+    <div
+      class="relative overflow-hidden rounded-3xl border border-brand-sage/40 bg-gradient-to-br from-brand-green to-brand-forest p-8 text-white shadow-lg min-h-[260px] flex flex-col justify-end"
+    >
+      <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/10"></div>
+      <div class="absolute bottom-16 right-10 h-24 w-24 rounded-full bg-brand-sage/30"></div>
+      <p class="relative text-sm font-medium uppercase tracking-widest text-brand-sage">
+        {t(locale, "hero.panelLabel")}
+      </p>
+      <p class="relative mt-2 text-2xl font-bold">
+        {t(locale, "hero.panelProducts")}
+      </p>
+      <p class="relative mt-2 text-sm text-white/80">
+        {t(locale, "hero.panelTrust")}
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="border-y border-brand-sage/30 bg-white">
+  <div
+    class="mx-auto flex max-w-6xl flex-wrap justify-center gap-3 px-4 py-6 md:gap-4 md:px-6"
+  >
+    {badges.map((label) => (
+      <span
+        class="inline-flex items-center gap-2 rounded-full border border-brand-sage/50 bg-brand-cream px-4 py-2 text-sm font-semibold text-brand-forest"
+      >
+        <span class="h-2 w-2 rounded-full bg-brand-green"></span>
+        {label}
+      </span>
+    ))}
+  </div>
+</section>
+
+<section
+  class="border-b border-brand-earth/30 bg-gradient-to-r from-brand-leaf/10 via-brand-cream to-brand-earth/15"
+>
+  <div
+    class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 md:flex-row md:items-center md:justify-between md:px-6"
+  >
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-wider text-brand-earth">
+        {t(locale, "expo.badge")}
+      </p>
+      <h2 class="mt-1 text-xl font-bold text-brand-forest md:text-2xl">
+        {t(locale, "expo.title")}
+      </h2>
+      <p class="mt-1 text-sm font-medium text-brand-green">
+        {t(locale, "expo.dates")}
+      </p>
+      <p class="mt-2 max-w-2xl text-sm text-brand-muted">
+        {t(locale, "expo.body")}
+      </p>
+    </div>
+    <LocaleLink
+      href="/contact"
+      class="shrink-0 rounded-lg bg-brand-forest px-5 py-3 text-center text-sm font-semibold text-white hover:bg-brand-green"
+    >
+      {t(locale, "expo.cta")}
+    </LocaleLink>
+  </div>
+</section>
+
+<section class="mx-auto max-w-6xl px-4 py-14 md:px-6">
+  <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+    <div class="max-w-2xl">
+      <h2 class="text-2xl font-bold text-brand-forest md:text-3xl">
+        {t(locale, "home.featured")}
+      </h2>
+      <p class="mt-2 text-brand-muted">{t(locale, "home.featuredSub")}</p>
+    </div>
+    <LocaleLink
+      href="/products"
+      class="text-sm font-semibold text-brand-green hover:text-brand-forest"
+    >
+      {t(locale, "home.viewAll")} →
+    </LocaleLink>
+  </div>
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {featured.map((p) => <ProductCard product={p} locale={locale} />)}
+  </div>
+</section>
+
+<section class="bg-brand-cream/80">
+  <div class="mx-auto max-w-6xl px-4 py-14 md:px-6">
+    <h2 class="mb-8 text-2xl font-bold text-brand-forest md:text-3xl">
+      {t(locale, "home.markets")}
+    </h2>
+    <div class="grid gap-5 md:grid-cols-3">
+      {markets.map((m) => (
+        <div class="rounded-2xl border border-brand-sage/40 bg-white p-6 shadow-sm">
+          <h3 class="text-lg font-bold text-brand-forest">{m.title}</h3>
+          <p class="mt-2 text-sm text-brand-muted">{m.sub}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

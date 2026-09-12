@@ -1,0 +1,18 @@
+---
+import ProductsPage from "@/components/ProductsPage.astro";
+import { t } from "@/i18n/dictionaries";
+import { defaultLocale } from "@/i18n/routing";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { buildPageSeo } from "@/lib/seo";
+
+const locale = defaultLocale;
+const seo = buildPageSeo({
+  locale,
+  path: "/products",
+  title: t(locale, "meta.productsTitle"),
+  description: t(locale, "meta.productsDesc"),
+});
+---
+<BaseLayout {...seo}>
+  <ProductsPage locale={locale} />
+</BaseLayout>

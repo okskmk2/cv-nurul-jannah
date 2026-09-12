@@ -1,13 +1,15 @@
 # CV. Nurul Jannah — Moringga (Kelor / Moringa)
 
-Next.js 16 (App Router) site for **CV. Nurul Jannah**, Madura MSME producing **Moringga** kelor foods from Sumenep (Pakandangan Sangra, Bluto). Theme: *Sehat Dengan Keajaiban Kelor* / *Healthy With the Magic of Kelor*.
+Astro site for **CV. Nurul Jannah**, Madura MSME producing **Moringga** kelor foods from Sumenep (Pakandangan Sangra, Bluto). Theme: *Sehat Dengan Keajaiban Kelor* / *Healthy With the Magic of Kelor*.
 
 ## Stack
 
-- Next.js 16 + React 19 + TypeScript
-- Tailwind CSS v4 (`@import "tailwindcss"`)
+- Astro (static HTML) + React islands (header, language switcher, contact form)
+- TypeScript
+- Tailwind CSS v4
 - `src/` directory with `@/*` path alias
-- Client-side i18n: EN (default), ID, AR (light stub)
+- i18n: EN (default, no prefix), ID, AR, KO
+- Cloudflare Workers via `@astrojs/cloudflare`
 
 ## Brand colors (Laporan Keberlanjutan 2023 cover)
 
@@ -27,18 +29,21 @@ Next.js 16 (App Router) site for **CV. Nurul Jannah**, Madura MSME producing **M
 | Route | Description |
 |-------|-------------|
 | `/` | Home — Moringga hero, Organic·Halal·PIRT·Zero Waste, Trade Expo 2026 band, 6 products, markets |
-| `/products` | Catalog — 6 kelor foods (All filter) |
+| `/products` | Catalog — 6 kelor foods |
 | `/trust` | Certs, Madura origin, Zero Waste, vision/mission/values, B2B highlights |
 | `/contact` | Trade questionnaire-aligned B2B form + WhatsApp contact |
+| `/api/contact` | POST — Cloudflare Email Sending |
+
+Other locales: `/id`, `/ko`, `/ar` plus the same paths.
 
 ## Products (Moringga)
 
-1. Moringa Coffee / Kopi Kelor  
-2. Moringa Tea / Teh Kelor  
-3. Moringa Crackers / Krupuk Kelor  
-4. Moringa Powder / Powder Kelor  
-5. Moringa Noodle / Mie Kelor  
-6. Moringa Stick / Stick Kelor  
+1. Moringa Coffee / Kopi Kelor
+2. Moringa Tea / Teh Kelor
+3. Moringa Crackers / Krupuk Kelor
+4. Moringa Powder / Powder Kelor
+5. Moringa Noodle / Mie Kelor
+6. Moringa Stick / Stick Kelor
 
 ## Run locally
 
@@ -47,31 +52,33 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:4321](http://localhost:4321).
 
 ```bash
-npm run build     # OpenNext / Cloudflare Worker build
-npm run preview   # serve the Worker locally (workerd)
+npm run build     # Astro + Cloudflare Worker
+npm run preview   # wrangler dev after build
 npm run deploy    # build and deploy to Cloudflare Workers
-npm run lint      # ESLint
+npm run lint      # astro check
 ```
 
 ## Deploy (Cloudflare Workers)
 
-This app deploys with `@opennextjs/cloudflare`. In Workers Builds:
-
 | Setting | Value |
 | --- | --- |
-| Build command | `npm run build` (runs `opennextjs-cloudflare build`) |
-| Deploy command | `npx wrangler deploy` or `npx opennextjs-cloudflare deploy` |
+| Build command | `npm run build` (`astro build`) |
+| Deploy command | `npx wrangler deploy` |
 
-Do not use `next build` as the CI build command. Wrangler then looks for `.open-next/.build/open-next.config.edge.mjs` and fails with *Could not find compiled Open Next config*.
+Do not use `next build` or OpenNext. Wrangler `main` is `dist/_worker.js`.
+
+Keep the Worker `send_email` binding named `EMAIL`.
+
+The Cloudflare adapter also expects a KV binding named `SESSION` (sessions are unused). First `wrangler deploy` can auto-provision it; if the dashboard asks, create an empty KV namespace and bind it as `SESSION`.
 
 ## SEO / Search Console
 
 English URLs have no prefix (`/products`). Other locales: `/id`, `/ko`, `/ar`.
 
 1. In [Google Search Console](https://search.google.com/search-console), add the property `https://cvnuruljannah.com`.
-2. Choose **HTML tag** verification. Put the content token in Cloudflare **Build variables** and **Worker variables** as `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`.
+2. Choose **HTML tag** verification. Put the content token in Cloudflare **Build variables** and **Worker variables** as `PUBLIC_GOOGLE_SITE_VERIFICATION` (legacy `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` is still read as a fallback).
 3. After deploy, submit `https://cvnuruljannah.com/sitemap.xml`.
 4. Request indexing for `/`, `/products`, `/trust`, and `/contact`.

@@ -1,0 +1,23 @@
+---
+import HomePage from "@/components/HomePage.astro";
+import { t, type Locale } from "@/i18n/dictionaries";
+import { prefixedLocales } from "@/i18n/routing";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { buildPageSeo } from "@/lib/seo";
+
+export function getStaticPaths() {
+  return prefixedLocales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const seo = buildPageSeo({
+  locale,
+  path: "/",
+  title: t(locale, "meta.homeTitle"),
+  description: t(locale, "meta.homeDesc"),
+  absoluteTitle: true,
+});
+---
+<BaseLayout {...seo}>
+  <HomePage locale={locale} />
+</BaseLayout>

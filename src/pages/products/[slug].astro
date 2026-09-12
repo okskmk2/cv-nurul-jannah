@@ -1,0 +1,41 @@
+---
+import ProductDetail from "@/components/ProductDetail.astro";
+import { getProductBySlug, productImagePath, products } from "@/data/products";
+import { defaultLocale } from "@/i18n/routing";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { buildPageSeo, productJsonLd } from "@/lib/seo";
+
+export function getStaticPaths() {
+  return products.map((product) => ({ params: { slug: product.slug } }));
+}
+
+const locale = defaultLocale;
+const slug = Astro.params.slug!;
+const product = getProductBySlug(slug);
+if (!product) {
+  return Astro.rewrite("/404");
+}
+
+const title = product.name[locale];
+const description = product.description[locale];
+const seo = buildPageSeo({
+  locale,
+  path: `/products/${product.slug}`,
+  title,
+  description,
+  image: productImagePath(product.slug),
+  imageAlt: `${title} — Moringga kelor, CV. Nurul Jannah`,
+});
+---
+<BaseLayout
+  {...seo}
+  jsonLd={productJsonLd({
+    locale,
+    slug: product.slug,
+    name: title,
+    description,
+    sku: product.sku,
+  })}
+>
+  <ProductDetail product={product} locale={locale} />
+</BaseLayout>
