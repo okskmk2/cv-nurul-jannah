@@ -1,4 +1,4 @@
-import Cloudflare from "cloudflare";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { NextResponse } from "next/server";
 import {
   INQUIRY_TO,
@@ -8,8 +8,6 @@ import {
   parseInquiry,
   type ContactInquiry,
 } from "@/lib/contact";
-
-export const runtime = "nodejs";
 
 const hits = new Map<string, { count: number; started: number }>();
 
@@ -75,27 +73,14 @@ export async function POST(req: Request) {
   return NextResponse.json({ ok: true });
 }
 
-const CLOUDFLARE_ACCOUNT_ID = "025ca3e44ac0979bc6ce635395d5bd6b";
-
 async function sendInquiryEmail(data: ContactInquiry) {
-  const client = new Cloudflare({
-    apiToken: process.env.CLOUDFLARE_API_TOKEN,
-  });
+  const { env } = await getCloudflareContext({ async: true });
 
-  const response = await client.emailSending.send({
-    account_id: CLOUDFLARE_ACCOUNT_ID,
-    from: {
-      address: data.email,
-      name: data.tradePerson || data.company,
-    },
+  await env.EMAIL.send({
     to: INQUIRY_TO,
+    from: data.email,
     subject: inquirySubject(data),
     html: inquiryHtml(data),
     text: inquiryText(data),
   });
-
-  const accepted = response.delivered.length + response.queued.length;
-  if (response.permanent_bounces.includes(INQUIRY_TO) && accepted === 0) {
-    throw new Error("Cloudflare Email API bounced export@cvnuruljannah.com");
-  }
 }
