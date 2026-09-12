@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CV. Nurul Jannah — MARONGGHI (Kelor / Moringa)
 
-## Getting Started
+Next.js 16 (App Router) site for **CV. Nurul Jannah**, Madura MSME producing **MARONGGHI** kelor foods from Sumenep (Pakandangan Sangra, Bluto). Theme: *Sehat Dengan Keajaiban Kelor* / *Healthy With the Magic of Kelor*.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 + React 19 + TypeScript
+- Tailwind CSS v4 (`@import "tailwindcss"`)
+- `src/` directory with `@/*` path alias
+- Client-side i18n: EN (default), ID, AR (light stub)
+
+## Brand colors (Laporan Keberlanjutan 2023 cover)
+
+| Token | Hex | Use |
+|-------|-----|-----|
+| `--background` / `--brand-cream` | `#F7F3E3` | Page cream |
+| `--brand-green` | `#2F8F45` | Primary CTAs |
+| `--brand-forest` | `#1B4D2E` | Headings / footer |
+| `--brand-sage` | `#A8C99A` | Accents |
+| `--brand-leaf` | `#3D9B4A` | Bright leaf accents |
+| `--brand-earth` | `#C4A35A` | Warm wood/cream accent |
+| `--brand-muted` | `#4F6356` | Secondary text |
+| `--foreground` | `#1B4D2E` | Body text |
+
+## Routes
+
+| Route | Description |
+|-------|-------------|
+| `/` | Home — MARONGGHI hero, Organic·Halal·PIRT·Zero Waste, Trade Expo 2026 band, 6 products, markets |
+| `/products` | Catalog — 6 kelor foods (All filter) |
+| `/trust` | Certs, Madura origin, Zero Waste, vision/mission/values, B2B highlights |
+| `/contact` | Trade questionnaire-aligned B2B form + WhatsApp contact |
+
+## Products (MARONGGHI)
+
+1. Moringa Coffee / Kopi Kelor  
+2. Moringa Tea / Teh Kelor  
+3. Moringa Crackers / Krupuk Kelor  
+4. Moringa Powder / Powder Kelor  
+5. Moringa Noodle / Mie Kelor  
+6. Moringa Stick / Stick Kelor  
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build   # production build
+npm run start   # serve production build
+npm run lint    # ESLint
+```
