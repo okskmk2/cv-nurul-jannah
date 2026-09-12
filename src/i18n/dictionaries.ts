@@ -57,6 +57,9 @@ const en: Dict = {
   "products.subtitle":
     "Moringga kelor catalog — coffee, tea, crackers, powder, noodles, and sticks from Madura.",
   "products.inquire": "Inquire",
+  "products.view": "View",
+  "products.back": "Back to products",
+  "products.details": "Product details",
   "products.form": "Form",
   "products.sku": "SKU",
   "products.moq": "MOQ",
@@ -176,6 +179,18 @@ const en: Dict = {
   "cta.sticky": "Request a B2B quote",
   "common.emailValue": "export@cvnuruljannah.com",
   "common.whatsappValue": "+62 812 0000 0000",
+  "meta.homeTitle": "CV. Nurul Jannah · Moringga | Madura Moringa / Kelor",
+  "meta.homeDesc":
+    "CV. Nurul Jannah — Moringga kelor foods from Sumenep, Madura: coffee, tea, powder, crackers, noodles, sticks. Organic, Halal, PIRT. B2B & export for SEA, Middle East, Europe.",
+  "meta.productsTitle": "Moringa / Kelor Products",
+  "meta.productsDesc":
+    "Moringga kelor catalog from Sumenep, Madura — coffee, tea, crackers, powder, noodles, and sticks. Organic, Halal, PIRT. B2B export.",
+  "meta.trustTitle": "Trust & Certifications",
+  "meta.trustDesc":
+    "Organic, Halal, PIRT, and optional COA. Madura origin, Zero Waste production, and B2B export track record — CV. Nurul Jannah.",
+  "meta.contactTitle": "B2B Inquiry",
+  "meta.contactDesc":
+    "Request a B2B quote from CV. Nurul Jannah — company profile, products, volume, and trade matching.",
 };
 
 const id: Dict = {
@@ -223,6 +238,9 @@ const id: Dict = {
   "products.subtitle":
     "Katalog kelor Moringga — kopi, teh, krupuk, powder, mie, dan stick dari Madura.",
   "products.inquire": "Tanya",
+  "products.view": "Lihat",
+  "products.back": "Kembali ke produk",
+  "products.details": "Detail produk",
   "products.form": "Bentuk",
   "products.sku": "SKU",
   "products.moq": "MOQ",
@@ -340,6 +358,18 @@ const id: Dict = {
   "footer.origin": "Pakandangan Sangra, Bluto · Sumenep, Madura",
   "footer.whatsappNote": "Kontak utama: saluran pemasaran WhatsApp",
   "cta.sticky": "Minta penawaran B2B",
+  "meta.homeTitle": "CV. Nurul Jannah · Moringga | Kelor Madura",
+  "meta.homeDesc":
+    "CV. Nurul Jannah — pangan kelor Moringga dari Sumenep, Madura: kopi, teh, powder, krupuk, mie, stick. Organik, Halal, PIRT. B2B & ekspor ke SEA, Timur Tengah, Eropa.",
+  "meta.productsTitle": "Produk Kelor / Moringa",
+  "meta.productsDesc":
+    "Katalog kelor Moringga dari Sumenep, Madura — kopi, teh, krupuk, powder, mie, dan stick. Organik, Halal, PIRT. Ekspor B2B.",
+  "meta.trustTitle": "Kepercayaan & Sertifikasi",
+  "meta.trustDesc":
+    "Organik, Halal, PIRT, dan COA opsional. Asal Madura, produksi Zero Waste, dan rekam jejak ekspor B2B — CV. Nurul Jannah.",
+  "meta.contactTitle": "Permintaan B2B",
+  "meta.contactDesc":
+    "Minta penawaran B2B dari CV. Nurul Jannah — profil perusahaan, produk, volume, dan matching perdagangan.",
 };
 
 const ar: Dict = {
@@ -358,6 +388,9 @@ const ar: Dict = {
   "hero.quote": "طلب عرض سعر",
   "products.title": "المنتجات",
   "products.inquire": "استفسار",
+  "products.view": "عرض",
+  "products.back": "العودة إلى المنتجات",
+  "products.details": "تفاصيل المنتج",
   "trust.title": "لماذا الشراكة معنا",
   "contact.title": "استفسار B2B / تجاري",
   "contact.send": "إرسال الاستفسار",
@@ -366,6 +399,18 @@ const ar: Dict = {
     "تعذر إرسال الاستفسار. حاول مرة أخرى أو راسل export@cvnuruljannah.com.",
   "expo.title": "التقِ بنا في معرض التجارة الإندونيسي 2026",
   "cta.sticky": "اطلب عرض سعر B2B",
+  "meta.homeTitle": "CV. Nurul Jannah · Moringga | مورينجا مادورا / كيلور",
+  "meta.homeDesc":
+    "CV. Nurul Jannah — أغذية كيلور Moringga من سومينيب، مادورا: قهوة وشاي ومسحوق ورقائق ونودلز وعصي. عضوي وحلال وPIRT. تصدير B2B.",
+  "meta.productsTitle": "منتجات المورينجا / الكيلور",
+  "meta.productsDesc":
+    "كتالوج كيلور Moringga من سومينيب، مادورا — قهوة وشاي ورقائق ومسحوق ونودلز وعصي. عضوي وحلال وPIRT.",
+  "meta.trustTitle": "الثقة والشهادات",
+  "meta.trustDesc":
+    "عضوي وحلال وPIRT وCOA اختياري. أصل مادورا وإنتاج صفر نفايات وسجل تصدير B2B.",
+  "meta.contactTitle": "استفسار B2B",
+  "meta.contactDesc":
+    "اطلب عرض سعر B2B من CV. Nurul Jannah — ملف الشركة والمنتجات والحجم والمطابقة التجارية.",
 };
 
 const ko: Dict = {
@@ -413,6 +458,9 @@ const ko: Dict = {
   "products.subtitle":
     "Moringga 켈로 카탈로그 — 마두라산 커피, 차, 크래커, 분말, 면, 스틱.",
   "products.inquire": "문의하기",
+  "products.view": "자세히",
+  "products.back": "제품 목록으로",
+  "products.details": "제품 상세",
   "products.form": "형태",
   "products.sku": "SKU",
   "products.moq": "MOQ",
@@ -530,6 +578,18 @@ const ko: Dict = {
   "footer.origin": "파칸당안 상그라, 블루토 · 수메넵, 마두라",
   "footer.whatsappNote": "주요 연락: WhatsApp 마케팅 채널",
   "cta.sticky": "B2B 견적 요청",
+  "meta.homeTitle": "CV. Nurul Jannah · Moringga | 마두라 모링가 / 켈로",
+  "meta.homeDesc":
+    "CV. Nurul Jannah — 수메넵·마두라산 Moringga 켈로 식품: 커피, 차, 분말, 크래커, 면, 스틱. 유기농, 할랄, PIRT. 동남아·중동·유럽 B2B 수출.",
+  "meta.productsTitle": "모링가 / 켈로 제품",
+  "meta.productsDesc":
+    "수메넵·마두라산 Moringga 켈로 카탈로그 — 커피, 차, 크래커, 분말, 면, 스틱. 유기농, 할랄, PIRT. B2B 수출.",
+  "meta.trustTitle": "신뢰와 인증",
+  "meta.trustDesc":
+    "유기농, 할랄, PIRT, 선택 COA. 마두라 원산지, 제로 웨이스트 생산, B2B 수출 실적 — CV. Nurul Jannah.",
+  "meta.contactTitle": "B2B 문의",
+  "meta.contactDesc":
+    "CV. Nurul Jannah B2B 견적 — 회사 소개, 제품, 물량, 무역 매칭.",
 };
 
 export const dictionaries: Record<Locale, Dict> = { en, id, ar, ko };

@@ -66,3 +66,12 @@ This app deploys with `@opennextjs/cloudflare`. In Workers Builds:
 | Deploy command | `npx wrangler deploy` or `npx opennextjs-cloudflare deploy` |
 
 Do not use `next build` as the CI build command. Wrangler then looks for `.open-next/.build/open-next.config.edge.mjs` and fails with *Could not find compiled Open Next config*.
+
+## SEO / Search Console
+
+English URLs have no prefix (`/products`). Other locales: `/id`, `/ko`, `/ar`.
+
+1. In [Google Search Console](https://search.google.com/search-console), add the property `https://cvnuruljannah.com`.
+2. Choose **HTML tag** verification. Put the content token in Cloudflare **Build variables** and **Worker variables** as `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`.
+3. After deploy, submit `https://cvnuruljannah.com/sitemap.xml`.
+4. Request indexing for `/`, `/products`, `/trust`, and `/contact`.

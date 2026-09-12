@@ -59,7 +59,8 @@ export function ContactPage() {
               </div>
             </dl>
             <a
-              href="/contact"
+              href="/catalog.pdf"
+              download="CV-Nurul-Jannah-Moringga-Catalog.pdf"
               className="mt-6 block rounded-lg bg-brand-green py-2.5 text-center text-sm font-semibold text-white hover:bg-brand-forest"
             >
               {t("contact.downloadCatalog")}

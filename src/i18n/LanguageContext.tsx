@@ -4,12 +4,12 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
-  useState,
   type ReactNode,
 } from "react";
-import { dictionaries, type Locale, t as translate } from "./dictionaries";
+import { usePathname, useRouter } from "next/navigation";
+import { type Locale, t as translate } from "./dictionaries";
+import { localizedPath, pathnameWithoutLocale } from "./routing";
 
 type LanguageContextValue = {
   locale: Locale;
@@ -20,37 +20,25 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-const STORAGE_KEY = "nj-locale";
+export function LanguageProvider({
+  locale,
+  children,
+}: {
+  locale: Locale;
+  children: ReactNode;
+}) {
+  const router = useRouter();
+  const pathname = usePathname();
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY) as Locale | null;
-      if (saved && saved in dictionaries) setLocaleState(saved);
-    } catch {
-      /* ignore */
-    }
-  }, []);
-
-  const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
-    try {
-      localStorage.setItem(STORAGE_KEY, next);
-    } catch {
-      /* ignore */
-    }
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = next;
-      document.documentElement.dir = next === "ar" ? "rtl" : "ltr";
-    }
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.lang = locale;
-    document.documentElement.dir = locale === "ar" ? "rtl" : "ltr";
-  }, [locale]);
+  const setLocale = useCallback(
+    (next: Locale) => {
+      const bare = pathnameWithoutLocale(pathname || "/");
+      const search =
+        typeof window !== "undefined" ? window.location.search : "";
+      router.push(`${localizedPath(bare, next)}${search}`);
+    },
+    [pathname, router],
+  );
 
   const value = useMemo<LanguageContextValue>(
     () => ({
@@ -72,3 +60,5 @@ export function useLanguage() {
   if (!ctx) throw new Error("useLanguage must be used within LanguageProvider");
   return ctx;
 }
+
+

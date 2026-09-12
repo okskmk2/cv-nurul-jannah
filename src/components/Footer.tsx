@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { BrandLogo } from "./BrandLogo";
+import { LocaleLink } from "./LocaleLink";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -11,9 +12,9 @@ export function Footer() {
     <footer className="mt-auto bg-brand-forest text-brand-cream">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-2 md:px-6 lg:grid-cols-3">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-green text-sm font-bold text-white">
-              NJ
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-cream p-1">
+              <BrandLogo className="h-9 w-9" />
             </span>
             <span>
               <span className="block font-bold">CV. Nurul Jannah</span>
@@ -40,19 +41,19 @@ export function Footer() {
             </h3>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
-                <Link href="/products" className="hover:text-white">
+                <LocaleLink href="/products" className="hover:text-white">
                   {t("nav.products")}
-                </Link>
+                </LocaleLink>
               </li>
               <li>
-                <Link href="/trust" className="hover:text-white">
+                <LocaleLink href="/trust" className="hover:text-white">
                   {t("nav.trust")}
-                </Link>
+                </LocaleLink>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white">
+                <LocaleLink href="/contact" className="hover:text-white">
                   {t("nav.contact")}
-                </Link>
+                </LocaleLink>
               </li>
             </ul>
           </div>

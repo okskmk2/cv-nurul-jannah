@@ -193,3 +193,11 @@ export function getProductsByCategory(category: ProductCategory | "all") {
   if (category === "all") return products;
   return products.filter((p) => p.category === category);
 }
+
+export function getProductBySlug(slug: string) {
+  return products.find((p) => p.slug === slug);
+}
+
+export function productImagePath(slug: string) {
+  return `/products/${slug}.jpg`;
+}

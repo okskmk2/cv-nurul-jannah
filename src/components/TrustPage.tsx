@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { LocaleLink } from "./LocaleLink";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export function TrustPage() {
@@ -172,18 +172,19 @@ export function TrustPage() {
             {t("trust.docsSub")}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link
+            <LocaleLink
               href="/contact"
               className="rounded-lg bg-brand-green px-5 py-3 text-sm font-semibold text-white hover:bg-brand-forest"
             >
               {t("trust.docsCta")}
-            </Link>
-            <Link
-              href="/contact"
+            </LocaleLink>
+            <a
+              href="/catalog.pdf"
+              download="CV-Nurul-Jannah-Moringga-Catalog.pdf"
               className="rounded-lg border-2 border-brand-green bg-white px-5 py-3 text-sm font-semibold text-brand-green hover:bg-white/80"
             >
               {t("trust.catalogCta")}
-            </Link>
+            </a>
           </div>
         </div>
       </section>

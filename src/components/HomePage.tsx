@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { LocaleLink } from "./LocaleLink";
 import { getFeaturedProducts } from "@/data/products";
 import { ProductCard } from "./ProductCard";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -27,18 +27,18 @@ export function HomePage() {
               {t("hero.subtitle")}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
+              <LocaleLink
                 href="/products"
                 className="rounded-lg bg-brand-green px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-forest"
               >
                 {t("hero.browse")}
-              </Link>
-              <Link
+              </LocaleLink>
+              <LocaleLink
                 href="/contact"
                 className="rounded-lg border-2 border-brand-green bg-white px-5 py-3 text-sm font-semibold text-brand-green hover:bg-brand-sage/20"
               >
                 {t("hero.quote")}
-              </Link>
+              </LocaleLink>
             </div>
           </div>
           <div className="relative overflow-hidden rounded-3xl border border-brand-sage/40 bg-gradient-to-br from-brand-green to-brand-forest p-8 text-white shadow-lg min-h-[260px] flex flex-col justify-end">
@@ -92,12 +92,12 @@ export function HomePage() {
               {t("expo.body")}
             </p>
           </div>
-          <Link
+          <LocaleLink
             href="/contact"
             className="shrink-0 rounded-lg bg-brand-forest px-5 py-3 text-center text-sm font-semibold text-white hover:bg-brand-green"
           >
             {t("expo.cta")}
-          </Link>
+          </LocaleLink>
         </div>
       </section>
 
@@ -109,12 +109,12 @@ export function HomePage() {
             </h2>
             <p className="mt-2 text-brand-muted">{t("home.featuredSub")}</p>
           </div>
-          <Link
+          <LocaleLink
             href="/products"
             className="text-sm font-semibold text-brand-green hover:text-brand-forest"
           >
             {t("home.viewAll")} →
-          </Link>
+          </LocaleLink>
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((p) => (
