@@ -1,6 +1,7 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { NextResponse } from "next/server";
 import {
+  INQUIRY_FROM,
   INQUIRY_TO,
   inquiryHtml,
   inquirySubject,
@@ -63,9 +64,13 @@ export async function POST(req: Request) {
   try {
     await sendInquiryEmail(parsed.data);
   } catch (error) {
-    console.error("contact inquiry email failed", error);
+    const code =
+      error && typeof error === "object" && "code" in error
+        ? String((error as { code: unknown }).code)
+        : undefined;
+    console.error("contact inquiry email failed", code, error);
     return NextResponse.json(
-      { ok: false, error: "Failed to send inquiry" },
+      { ok: false, error: "Failed to send inquiry", code },
       { status: 502 },
     );
   }
@@ -75,10 +80,16 @@ export async function POST(req: Request) {
 
 async function sendInquiryEmail(data: ContactInquiry) {
   const { env } = await getCloudflareContext({ async: true });
+  if (!env.EMAIL) {
+    throw new Error("EMAIL binding is not configured");
+  }
 
+  // Cloudflare Email Sending only accepts `from` on an onboarded domain.
+  // Put the visitor on replyTo so export@ can answer them directly.
   await env.EMAIL.send({
     to: INQUIRY_TO,
-    from: data.email,
+    from: { email: INQUIRY_FROM, name: "CV. Nurul Jannah" },
+    replyTo: { email: data.email, name: data.company },
     subject: inquirySubject(data),
     html: inquiryHtml(data),
     text: inquiryText(data),

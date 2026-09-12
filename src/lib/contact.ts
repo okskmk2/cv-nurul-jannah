@@ -1,4 +1,5 @@
 export const INQUIRY_TO = "export@cvnuruljannah.com";
+export const INQUIRY_FROM = "noreply@cvnuruljannah.com";
 
 export const IMPORT_HISTORY = ["none", "0_2", "3_5", "6_10", "10plus"] as const;
 export const MATCHING = ["yes", "no"] as const;
