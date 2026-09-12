@@ -18,7 +18,7 @@ export function Footer() {
             <span>
               <span className="block font-bold">CV. Nurul Jannah</span>
               <span className="block text-xs font-semibold uppercase tracking-wider text-brand-sage">
-                MARONGGHI
+                Moringga
               </span>
             </span>
           </div>
@@ -85,12 +85,12 @@ export function Footer() {
             {t("footer.language")}
           </h3>
           <div className="mt-3">
-            <LanguageSwitcher className="[&_button]:text-brand-cream [&_button.bg-brand-green]:bg-brand-green" />
+            <LanguageSwitcher variant="dark" />
           </div>
         </div>
       </div>
       <div className="border-t border-white/10 py-4 text-center text-xs text-brand-cream/60">
-        © {new Date().getFullYear()} CV. Nurul Jannah · MARONGGHI. All rights reserved.
+        © {new Date().getFullYear()} CV. Nurul Jannah · Moringga. All rights reserved.
       </div>
     </footer>
   );

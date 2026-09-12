@@ -1,6 +1,6 @@
-# CV. Nurul Jannah — MARONGGHI (Kelor / Moringa)
+# CV. Nurul Jannah — Moringga (Kelor / Moringa)
 
-Next.js 16 (App Router) site for **CV. Nurul Jannah**, Madura MSME producing **MARONGGHI** kelor foods from Sumenep (Pakandangan Sangra, Bluto). Theme: *Sehat Dengan Keajaiban Kelor* / *Healthy With the Magic of Kelor*.
+Next.js 16 (App Router) site for **CV. Nurul Jannah**, Madura MSME producing **Moringga** kelor foods from Sumenep (Pakandangan Sangra, Bluto). Theme: *Sehat Dengan Keajaiban Kelor* / *Healthy With the Magic of Kelor*.
 
 ## Stack
 
@@ -26,12 +26,12 @@ Next.js 16 (App Router) site for **CV. Nurul Jannah**, Madura MSME producing **M
 
 | Route | Description |
 |-------|-------------|
-| `/` | Home — MARONGGHI hero, Organic·Halal·PIRT·Zero Waste, Trade Expo 2026 band, 6 products, markets |
+| `/` | Home — Moringga hero, Organic·Halal·PIRT·Zero Waste, Trade Expo 2026 band, 6 products, markets |
 | `/products` | Catalog — 6 kelor foods (All filter) |
 | `/trust` | Certs, Madura origin, Zero Waste, vision/mission/values, B2B highlights |
 | `/contact` | Trade questionnaire-aligned B2B form + WhatsApp contact |
 
-## Products (MARONGGHI)
+## Products (Moringga)
 
 1. Moringa Coffee / Kopi Kelor  
 2. Moringa Tea / Teh Kelor  

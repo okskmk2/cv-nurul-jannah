@@ -3,9 +3,12 @@
 import { FormEvent, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLanguage } from "@/i18n/LanguageContext";
-
-type ImportHistory = "" | "none" | "0_2" | "3_5" | "6_10" | "10plus";
-type Matching = "" | "yes" | "no";
+import {
+  CHALLENGES,
+  type Challenge,
+  type ImportHistory,
+  type Matching,
+} from "@/lib/contact";
 
 type FormState = {
   company: string;
@@ -15,10 +18,11 @@ type FormState = {
   tradePerson: string;
   industry: string;
   mainProducts: string;
-  importHistory: ImportHistory;
-  challenges: string[];
-  matching: Matching;
+  importHistory: ImportHistory | "";
+  challenges: Challenge[];
+  matching: Matching | "";
   message: string;
+  website: string;
 };
 
 const empty: FormState = {
@@ -33,16 +37,10 @@ const empty: FormState = {
   challenges: [],
   matching: "",
   message: "",
+  website: "",
 };
 
-const challengeKeys = [
-  "partners",
-  "market",
-  "regs",
-  "info",
-  "labor",
-  "fx",
-] as const;
+const challengeKeys = CHALLENGES;
 
 const importOptions: { value: Exclude<ImportHistory, "">; key: string }[] = [
   { value: "none", key: "contact.import.none" },
@@ -56,7 +54,7 @@ const fieldClass =
   "w-full rounded-lg border border-brand-sage/50 bg-brand-cream/40 px-3 py-2.5 text-sm text-brand-forest outline-none ring-brand-green/40 placeholder:text-brand-muted focus:ring-2";
 
 export function ContactForm() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const searchParams = useSearchParams();
   const productHint = searchParams.get("product") ?? "";
 
@@ -73,12 +71,14 @@ export function ContactForm() {
 
   const [form, setForm] = useState<FormState>(initial);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  function toggleChallenge(key: string) {
+  function toggleChallenge(key: Challenge) {
     setForm((prev) => {
       const has = prev.challenges.includes(key);
       if (has) {
@@ -89,12 +89,34 @@ export function ContactForm() {
     });
   }
 
-  function onSubmit(e: FormEvent) {
+  async function onSubmit(e: FormEvent) {
     e.preventDefault();
     if (!form.importHistory || !form.matching || form.challenges.length === 0) {
       return;
     }
-    setSubmitted(true);
+    setError(null);
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          locale,
+        }),
+      });
+      const data = (await res.json().catch(() => null)) as
+        | { ok?: boolean }
+        | null;
+      if (!res.ok || !data?.ok) {
+        throw new Error("send failed");
+      }
+      setSubmitted(true);
+    } catch {
+      setError(t("contact.error"));
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -130,8 +152,19 @@ export function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-2xl border border-brand-sage/50 bg-white p-6 shadow-sm md:p-8"
+      aria-busy={submitting}
+      className="relative rounded-2xl border border-brand-sage/50 bg-white p-6 shadow-sm md:p-8"
     >
+      <input
+        type="text"
+        name="website"
+        value={form.website}
+        onChange={(e) => update("website", e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        className="absolute -left-[9999px] h-0 w-0 opacity-0"
+        aria-hidden
+      />
       <div className="space-y-4">
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium text-brand-forest">
@@ -334,11 +367,17 @@ export function ContactForm() {
           />
         </label>
       </div>
+      {error && (
+        <p className="mt-4 text-sm font-medium text-red-700" role="alert">
+          {error}
+        </p>
+      )}
       <button
         type="submit"
-        className="mt-6 rounded-lg bg-brand-green px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-forest"
+        disabled={submitting}
+        className="mt-6 rounded-lg bg-brand-green px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-forest disabled:cursor-not-allowed disabled:opacity-70"
       >
-        {t("contact.send")}
+        {submitting ? t("contact.sending") : t("contact.send")}
       </button>
     </form>
   );

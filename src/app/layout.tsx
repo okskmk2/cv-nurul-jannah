@@ -17,16 +17,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://cvnuruljannah.com"),
   title: {
-    default: "CV. Nurul Jannah · MARONGGHI | Madura Moringa / Kelor",
+    default: "CV. Nurul Jannah · Moringga | Madura Moringa / Kelor",
     template: "%s | CV. Nurul Jannah",
   },
   description:
-    "CV. Nurul Jannah — MARONGGHI kelor foods from Sumenep, Madura: coffee, tea, powder, crackers, noodles, sticks. Organic, Halal, PIRT. B2B & export for SEA, Middle East, Europe.",
+    "CV. Nurul Jannah — Moringga kelor foods from Sumenep, Madura: coffee, tea, powder, crackers, noodles, sticks. Organic, Halal, PIRT. B2B & export for SEA, Middle East, Europe.",
   keywords: [
     "moringa",
     "kelor",
-    "MARONGGHI",
+    "Moringga",
     "CV Nurul Jannah",
     "Sumenep",
     "Madura",

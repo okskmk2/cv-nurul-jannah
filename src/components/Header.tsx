@@ -30,7 +30,7 @@ export function Header() {
               CV. Nurul Jannah
             </span>
             <span className="block text-[10px] font-semibold uppercase tracking-wider text-brand-leaf sm:text-xs">
-              MARONGGHI
+              Moringga
             </span>
           </span>
         </Link>
@@ -106,7 +106,7 @@ export function Header() {
             ))}
           </nav>
           <div className="mt-4 flex flex-col gap-3 border-t border-brand-sage/30 pt-4">
-            <LanguageSwitcher />
+            <LanguageSwitcher className="w-full [&_select]:w-full" />
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
