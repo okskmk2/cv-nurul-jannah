@@ -29,7 +29,9 @@
   --color-brand-earth: var(--brand-earth);
   --color-brand-muted: var(--brand-muted);
   --font-sans: "Geist Sans", "Malgun Gothic", "Apple SD Gothic Neo",
-    "Noto Sans KR", system-ui, sans-serif;
+    "Noto Sans KR", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+    "Hiragino Sans", "Yu Gothic", "Meiryo", "Noto Sans JP",
+    system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, monospace;
 }
 

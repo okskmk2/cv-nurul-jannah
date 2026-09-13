@@ -8,7 +8,7 @@ Astro site for **CV. Nurul Jannah**, Madura MSME producing **Moringga** kelor fo
 - TypeScript
 - Tailwind CSS v4
 - `src/` directory with `@/*` path alias
-- i18n: EN (default, no prefix), ID, AR, KO
+- i18n: EN (default, no prefix), ID, AR, KO, ZH, JA
 - Cloudflare Workers via `@astrojs/cloudflare`
 
 ## Brand colors (Laporan Keberlanjutan 2023 cover)
@@ -34,7 +34,7 @@ Astro site for **CV. Nurul Jannah**, Madura MSME producing **Moringga** kelor fo
 | `/contact` | Trade questionnaire-aligned B2B form + WhatsApp contact |
 | `/api/contact` | POST — Cloudflare Email Sending |
 
-Other locales: `/id`, `/ko`, `/ar` plus the same paths.
+Other locales: `/id`, `/ko`, `/ar`, `/zh`, `/ja` plus the same paths.
 
 ## Products (Moringga)
 
@@ -76,7 +76,7 @@ The Cloudflare adapter also expects a KV binding named `SESSION` (sessions are u
 
 ## SEO / Search Console
 
-English URLs have no prefix (`/products`). Other locales: `/id`, `/ko`, `/ar`.
+English URLs have no prefix (`/products`). Other locales: `/id`, `/ko`, `/ar`, `/zh`, `/ja`.
 
 1. In [Google Search Console](https://search.google.com/search-console), add the property `https://cvnuruljannah.com`.
 2. Choose **HTML tag** verification. Put the content token in Cloudflare **Build variables** and **Worker variables** as `PUBLIC_GOOGLE_SITE_VERIFICATION` (legacy `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` is still read as a fallback).

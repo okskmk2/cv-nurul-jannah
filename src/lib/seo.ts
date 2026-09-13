@@ -23,6 +23,10 @@ function ogLocale(locale: Locale): string {
       return "ar_AR";
     case "ko":
       return "ko_KR";
+    case "zh":
+      return "zh_CN";
+    case "ja":
+      return "ja_JP";
     default:
       return "en_US";
   }
