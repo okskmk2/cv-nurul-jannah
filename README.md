@@ -1,6 +1,6 @@
-# CV. Nurul Jannah — Moringga (Kelor)
+# CV. Nurul Jannah — Moringa (Kelor)
 
-Astro site for **CV. Nurul Jannah**, Madura MSME producing **Moringga** kelor foods from Sumenep (Pakandangan Sangra, Bluto). Theme: *Sehat Dengan Keajaiban Kelor* / *Healthy With the Magic of Kelor*.
+Astro site for **CV. Nurul Jannah**, Madura MSME producing **Moringa** kelor foods from Sumenep (Pakandangan Sangra, Bluto). Theme: *Sehat Dengan Keajaiban Kelor* / *Healthy With the Magic of Kelor*.
 
 ## Stack
 
@@ -28,7 +28,7 @@ Astro site for **CV. Nurul Jannah**, Madura MSME producing **Moringga** kelor fo
 
 | Route | Description |
 |-------|-------------|
-| `/` | Home — Moringga hero, Organic·Halal·PIRT·Zero Waste, Trade Expo 2026 band, 6 products, markets |
+| `/` | Home — Moringa hero, Organic·Halal·PIRT·Zero Waste, Trade Expo 2026 band, 6 products, markets |
 | `/products` | Catalog — 6 kelor foods |
 | `/trust` | Certs, Madura origin, Zero Waste, vision/mission/values, B2B highlights |
 | `/contact` | Trade questionnaire-aligned B2B form + WhatsApp contact |
@@ -36,14 +36,14 @@ Astro site for **CV. Nurul Jannah**, Madura MSME producing **Moringga** kelor fo
 
 Other locales: `/id`, `/ko`, `/ar`, `/zh`, `/ja` plus the same paths.
 
-## Products (Moringga)
+## Products (Moringa)
 
-1. Moringga Coffee / Kopi Kelor
-2. Moringga Tea / Teh Kelor
-3. Moringga Crackers / Krupuk Kelor
-4. Moringga Powder / Powder Kelor
-5. Moringga Noodle / Mie Kelor
-6. Moringga Stick / Stick Kelor
+1. Moringa Coffee / Kopi Kelor
+2. Moringa Tea / Teh Kelor
+3. Moringa Crackers / Krupuk Kelor
+4. Moringa Powder / Powder Kelor
+5. Moringa Noodle / Mie Kelor
+6. Moringa Stick / Stick Kelor
 
 ## Run locally
 

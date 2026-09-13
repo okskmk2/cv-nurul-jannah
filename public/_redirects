@@ -1,7 +1,7 @@
 /en/* /:splat 302
-/products/moringa-* /products/moringga-:splat 301
-/id/products/moringa-* /id/products/moringga-:splat 301
-/ko/products/moringa-* /ko/products/moringga-:splat 301
-/ar/products/moringa-* /ar/products/moringga-:splat 301
-/zh/products/moringa-* /zh/products/moringga-:splat 301
-/ja/products/moringa-* /ja/products/moringga-:splat 301
+/products/moringga-* /products/moringa-:splat 301
+/id/products/moringga-* /id/products/moringa-:splat 301
+/ko/products/moringga-* /ko/products/moringa-:splat 301
+/ar/products/moringga-* /ar/products/moringa-:splat 301
+/zh/products/moringga-* /zh/products/moringa-:splat 301
+/ja/products/moringga-* /ja/products/moringa-:splat 301

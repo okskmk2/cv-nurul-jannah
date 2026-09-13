@@ -192,7 +192,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
           )}
           <a
             href="/catalog.pdf"
-            download="CV-Nurul-Jannah-Moringga-Catalog.pdf"
+            download="CV-Nurul-Jannah-Moringa-Catalog.pdf"
             className="inline-flex items-center gap-1.5 rounded-lg border border-brand-sage px-4 py-2 text-sm font-semibold text-brand-forest hover:bg-brand-sage/20"
           >
             <Download className="h-4 w-4" aria-hidden />

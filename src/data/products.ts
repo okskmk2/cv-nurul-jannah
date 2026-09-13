@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n/dictionaries";
 
-export type ProductCategory = "moringga";
+export type ProductCategory = "moringa";
 
 export type LocalizedText = Record<Locale, string>;
 
@@ -19,16 +19,16 @@ export type Product = {
 export const products: Product[] = [
   {
     id: "1",
-    slug: "moringga-coffee",
+    slug: "moringa-coffee",
     name: {
-      en: "Moringga Coffee",
+      en: "Moringa Coffee",
       id: "Kopi Kelor",
       ar: "قهوة المورينجا",
       ko: "모링가 커피",
-      zh: "Moringga 辣木咖啡",
-      ja: "Moringga モリンガコーヒー",
+      zh: "Moringa 辣木咖啡",
+      ja: "Moringa モリンガコーヒー",
     },
-    category: "moringga",
+    category: "moringa",
     form: {
       en: "Ready-to-brew coffee blend",
       id: "Campuran kopi siap seduh",
@@ -41,26 +41,26 @@ export const products: Product[] = [
     moq: "10 kg",
     featured: true,
     description: {
-      en: "Moringga coffee from Madura kelor leaves — for retail and food-service partners.",
-      id: "Kopi kelor Moringga dari daun kelor Madura — untuk mitra ritel dan food service.",
-      ar: "قهوة مورينجا Moringga من أوراق كيلور مادورا — لشركاء التجزئة وخدمات الطعام.",
-      ko: "마두라 켈로 잎으로 만든 Moringga 모링가 커피 — 리테일 및 외식 파트너용.",
-      zh: "采用马都拉辣木叶的 Moringga 咖啡 — 面向零售与餐饮伙伴。",
-      ja: "マドゥラ産ケロール葉の Moringga コーヒー — 小売・外食パートナー向け。",
+      en: "Moringa coffee from Madura kelor leaves — for retail and food-service partners.",
+      id: "Kopi kelor Moringa dari daun kelor Madura — untuk mitra ritel dan food service.",
+      ar: "قهوة مورينجا Moringa من أوراق كيلور مادورا — لشركاء التجزئة وخدمات الطعام.",
+      ko: "마두라 켈로 잎으로 만든 Moringa 모링가 커피 — 리테일 및 외식 파트너용.",
+      zh: "采用马都拉辣木叶的 Moringa 咖啡 — 面向零售与餐饮伙伴。",
+      ja: "マドゥラ産ケロール葉の Moringa コーヒー — 小売・外食パートナー向け。",
     },
   },
   {
     id: "2",
-    slug: "moringga-tea",
+    slug: "moringa-tea",
     name: {
-      en: "Moringga Tea",
+      en: "Moringa Tea",
       id: "Teh Kelor",
       ar: "شاي المورينجا",
       ko: "모링가 차",
-      zh: "Moringga 辣木茶",
-      ja: "Moringga モリンガ茶",
+      zh: "Moringa 辣木茶",
+      ja: "Moringa モリンガ茶",
     },
-    category: "moringga",
+    category: "moringa",
     form: {
       en: "Dried leaf tea",
       id: "Teh daun kering",
@@ -83,16 +83,16 @@ export const products: Product[] = [
   },
   {
     id: "3",
-    slug: "moringga-crackers",
+    slug: "moringa-crackers",
     name: {
-      en: "Moringga Crackers",
+      en: "Moringa Crackers",
       id: "Krupuk Kelor",
       ar: "رقائق المورينجا",
       ko: "모링가 크래커",
-      zh: "Moringga 辣木薄脆",
-      ja: "Moringga モリンガクラッカー",
+      zh: "Moringa 辣木薄脆",
+      ja: "Moringa モリンガクラッカー",
     },
-    category: "moringga",
+    category: "moringa",
     form: {
       en: "Snack crackers",
       id: "Krupuk camilan",
@@ -105,7 +105,7 @@ export const products: Product[] = [
     moq: "20 carton",
     featured: true,
     description: {
-      en: "Crispy moringga crackers with Nusantara spice notes — snack channel ready.",
+      en: "Crispy moringa crackers with Nusantara spice notes — snack channel ready.",
       id: "Krupuk kelor renyah dengan sentuhan rempah Nusantara — siap saluran camilan.",
       ar: "رقائق مورينجا مقرمشة بنكهات توابل نوسانتارا — جاهزة لقنوات الوجبات الخفيفة.",
       ko: "누산타라 향신료 노트가 있는 바삭한 모링가 크래커 — 스낵 채널용.",
@@ -115,16 +115,16 @@ export const products: Product[] = [
   },
   {
     id: "4",
-    slug: "moringga-powder",
+    slug: "moringa-powder",
     name: {
-      en: "Moringga Powder",
+      en: "Moringa Powder",
       id: "Powder Kelor",
       ar: "مسحوق المورينجا",
       ko: "모링가 분말",
-      zh: "Moringga 辣木粉",
-      ja: "Moringga モリンガパウダー",
+      zh: "Moringa 辣木粉",
+      ja: "Moringa モリンガパウダー",
     },
-    category: "moringga",
+    category: "moringa",
     form: {
       en: "Fine leaf powder",
       id: "Bubuk daun halus",
@@ -137,7 +137,7 @@ export const products: Product[] = [
     moq: "25 kg",
     featured: true,
     description: {
-      en: "Export-grade moringga leaf powder from Sumenep farms for food and nutraceutical use.",
+      en: "Export-grade moringa leaf powder from Sumenep farms for food and nutraceutical use.",
       id: "Bubuk daun kelor kualitas ekspor dari lahan Sumenep untuk pangan dan nutraceutical.",
       ar: "مسحوق أوراق مورينجا بدرجة تصدير من مزارع سومينيب للأغذية والمكملات.",
       ko: "수메넵 농장의 수출 등급 모링가 잎 분말 — 식품 및 건강기능식품용.",
@@ -147,16 +147,16 @@ export const products: Product[] = [
   },
   {
     id: "5",
-    slug: "moringga-noodle",
+    slug: "moringa-noodle",
     name: {
-      en: "Moringga Noodle",
+      en: "Moringa Noodle",
       id: "Mie Kelor",
       ar: "نودلز المورينجا",
       ko: "모링가 면",
-      zh: "Moringga 辣木面",
-      ja: "Moringga モリンガ麺",
+      zh: "Moringa 辣木面",
+      ja: "Moringa モリンガ麺",
     },
-    category: "moringga",
+    category: "moringa",
     form: {
       en: "Dried noodles",
       id: "Mie kering",
@@ -169,7 +169,7 @@ export const products: Product[] = [
     moq: "20 carton",
     featured: true,
     description: {
-      en: "Everyday moringga noodles for healthy meal programs and retail shelves.",
+      en: "Everyday moringa noodles for healthy meal programs and retail shelves.",
       id: "Mie kelor sehari-hari untuk program gizi sehat dan rak ritel.",
       ar: "نودلز مورينجا يومية لبرامج الوجبات الصحية وأرفف التجزئة.",
       ko: "건강 식단 프로그램과 리테일 매대를 위한 일상용 모링가 면.",
@@ -179,16 +179,16 @@ export const products: Product[] = [
   },
   {
     id: "6",
-    slug: "moringga-stick",
+    slug: "moringa-stick",
     name: {
-      en: "Moringga Stick",
+      en: "Moringa Stick",
       id: "Stick Kelor",
       ar: "عصي المورينجا",
       ko: "모링가 스틱",
-      zh: "Moringga 辣木棒",
-      ja: "Moringga モリンガスティック",
+      zh: "Moringa 辣木棒",
+      ja: "Moringa モリンガスティック",
     },
-    category: "moringga",
+    category: "moringa",
     form: {
       en: "Snack sticks",
       id: "Stick camilan",
@@ -201,7 +201,7 @@ export const products: Product[] = [
     moq: "20 carton",
     featured: true,
     description: {
-      en: "Convenient moringga stick snacks for modern trade and community channels.",
+      en: "Convenient moringa stick snacks for modern trade and community channels.",
       id: "Camilan stick kelor praktis untuk modern trade dan saluran komunitas.",
       ar: "وجبات مورينجا على شكل عصي مريحة للتجارة الحديثة وقنوات المجتمع.",
       ko: "현대 유통 및 커뮤니티 채널을 위한 간편한 모링가 스틱 스낵.",
@@ -211,16 +211,16 @@ export const products: Product[] = [
   },
   {
     id: "7",
-    slug: "moringga-oil",
+    slug: "moringa-oil",
     name: {
-      en: "Moringga Seed Oil",
+      en: "Moringa Seed Oil",
       id: "Minyak Biji Kelor",
       ar: "زيت بذور المورينجا",
       ko: "모링가씨 오일",
-      zh: "Moringga 辣木籽油",
-      ja: "Moringga モリンガシードオイル",
+      zh: "Moringa 辣木籽油",
+      ja: "Moringa モリンガシードオイル",
     },
-    category: "moringga",
+    category: "moringa",
     form: {
       en: "30ml glass bottle",
       id: "Botol kaca 30ml",
@@ -233,11 +233,11 @@ export const products: Product[] = [
     moq: "100 bottle",
     featured: true,
     description: {
-      en: "Madura kelor (moringga) seed oil in 30ml glass bottles — for retail, wellness, and private-label partners.",
+      en: "Madura kelor (moringa) seed oil in 30ml glass bottles — for retail, wellness, and private-label partners.",
       id: "Minyak biji kelor Madura dalam botol kaca 30ml — untuk mitra ritel, wellness, dan kemasan private label.",
       ar: "زيت بذور كيلور مادورا في زجاجات 30 مل — لشركاء التجزئة والعافية والعلامة الخاصة.",
       ko: "30ml 유리병에 담긴 마두라 켈로(모링가씨) 오일 — 리테일, 웰니스, 프라이빗 라벨 파트너용.",
-      zh: "30ml 玻璃瓶装马都拉辣木籽（Moringga）油 — 面向零售、养生与贴牌伙伴。",
+      zh: "30ml 玻璃瓶装马都拉辣木籽（Moringa）油 — 面向零售、养生与贴牌伙伴。",
       ja: "30ml ガラス瓶入りマドゥラ産ケロール（モリンガ）シードオイル — 小売、ウェルネス、プライベートラベル向け。",
     },
   },
@@ -245,12 +245,12 @@ export const products: Product[] = [
 
 export const categoryLabels: Record<ProductCategory | "all", LocalizedText> = {
   all: { en: "All", id: "Semua", ar: "الكل", ko: "전체", zh: "全部", ja: "すべて" },
-  moringga: {
-    en: "Moringga / Kelor",
-    id: "Kelor / Moringga",
+  moringa: {
+    en: "Moringa / Kelor",
+    id: "Kelor / Moringa",
     ar: "مورينجا / كيلور",
     ko: "모링가 / 켈로",
-    zh: "辣木 / Moringga",
+    zh: "辣木 / Moringa",
     ja: "モリンガ / ケロール",
   },
 };

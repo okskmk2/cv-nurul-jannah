@@ -227,7 +227,7 @@ function productLabels(slugs: string[]): string {
 }
 
 export function inquirySubject(data: ContactInquiry): string {
-  return `[Moringga] B2B quote request from ${data.company}`;
+  return `[Moringa] B2B quote request from ${data.company}`;
 }
 
 export function inquiryFields(data: ContactInquiry): Record<string, string> {
@@ -263,7 +263,7 @@ export function inquiryText(data: ContactInquiry): string {
   const lines = Object.entries(fields).map(([key, value]) =>
     key === "Message" ? `${key}:\n${value}` : `${key}: ${value}`,
   );
-  return `New B2B quote request for CV. Nurul Jannah / Moringga\n\n${lines.join("\n")}\n`;
+  return `New B2B quote request for CV. Nurul Jannah / Moringa\n\n${lines.join("\n")}\n`;
 }
 
 export function inquiryHtml(data: ContactInquiry): string {
@@ -274,7 +274,7 @@ export function inquiryHtml(data: ContactInquiry): string {
     )
     .join("");
 
-  return `<p>New B2B quote request for CV. Nurul Jannah / Moringga</p><table>${rows}</table>`;
+  return `<p>New B2B quote request for CV. Nurul Jannah / Moringa</p><table>${rows}</table>`;
 }
 
 function escapeHtml(value: string): string {

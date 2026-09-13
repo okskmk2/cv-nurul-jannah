@@ -9,7 +9,7 @@ type Props = { product: Product; locale: Locale; showMoq?: boolean };
 const { product, locale, showMoq = false } = Astro.props;
 const name = product.name[locale];
 const image = productImagePath(product.slug);
-const alt = `${name} — Moringga kelor, CV. Nurul Jannah`;
+const alt = `${name} — Moringa kelor, CV. Nurul Jannah`;
 ---
 
 <article

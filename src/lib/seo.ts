@@ -84,7 +84,7 @@ export function organizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: SITE_NAME,
-    alternateName: "Moringga",
+    alternateName: "Moringa",
     url: SITE_URL,
     email: SITE_EMAIL,
     logo: `${SITE_URL}/logo.png`,
@@ -121,7 +121,7 @@ export function productJsonLd({
     sku,
     image: `${SITE_URL}/products/${slug}.jpg`,
     url: absoluteUrl(path, locale),
-    brand: { "@type": "Brand", name: "Moringga" },
+    brand: { "@type": "Brand", name: "Moringa" },
     manufacturer: {
       "@type": "Organization",
       name: SITE_NAME,

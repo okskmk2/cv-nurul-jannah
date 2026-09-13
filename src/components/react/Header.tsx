@@ -35,7 +35,7 @@ export function Header({
               CV. Nurul Jannah
             </span>
             <span className="block text-[10px] font-semibold uppercase tracking-wider text-brand-leaf sm:text-xs">
-              Moringga
+              Moringa
             </span>
           </span>
         </a>

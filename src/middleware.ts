@@ -8,8 +8,8 @@ function moringgaAliasPath(pathname: string): string | null {
   const productsIdx = parts.indexOf("products");
   if (productsIdx === -1 || productsIdx >= parts.length - 1) return null;
   const segment = parts[productsIdx + 1];
-  if (!segment?.startsWith("moringa-")) return null;
-  parts[productsIdx + 1] = `moringga-${segment.slice("moringa-".length)}`;
+  if (!segment?.startsWith("moringga-")) return null;
+  parts[productsIdx + 1] = `moringa-${segment.slice("moringga-".length)}`;
   return parts.join("/") || "/";
 }
 
