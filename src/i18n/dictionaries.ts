@@ -232,7 +232,7 @@ const en: Dict = {
   "footer.whatsappNote": "Primary contact: WhatsApp marketing channel",
   "cta.sticky": "Request a B2B quote",
   "common.emailValue": "export@cvnuruljannah.com",
-  "common.whatsappValue": "+62 821 8513 0488",
+  "common.whatsappValue": "+62 853 6765 9422",
   "meta.homeTitle": "CV. Nurul Jannah · Moringga | Madura Moringga / Kelor",
   "meta.homeDesc":
     "CV. Nurul Jannah — Moringga kelor products from Sumenep, Madura: coffee, tea, powder, crackers, noodles, sticks, seed oil. Organic, Halal, PIRT. B2B & export for SEA, Middle East, Europe.",
