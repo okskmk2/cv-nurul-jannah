@@ -1,1 +1,5 @@
 /en/* /:splat 302
+/products/moringa-* /products/moringga-:splat 301
+/id/products/moringa-* /id/products/moringga-:splat 301
+/ko/products/moringa-* /ko/products/moringga-:splat 301
+/ar/products/moringa-* /ar/products/moringga-:splat 301

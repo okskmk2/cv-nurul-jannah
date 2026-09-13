@@ -1,4 +1,11 @@
 ---
+import ArrowRight from "@lucide/astro/icons/arrow-right";
+import Building from "@lucide/astro/icons/building";
+import CalendarDays from "@lucide/astro/icons/calendar-days";
+import Globe from "@lucide/astro/icons/globe";
+import Landmark from "@lucide/astro/icons/landmark";
+import MapPin from "@lucide/astro/icons/map-pin";
+import CertMark from "./CertMark.astro";
 import LocaleLink from "./LocaleLink.astro";
 import ProcessGallery from "./ProcessGallery.astro";
 import ProductCard from "./ProductCard.astro";
@@ -9,15 +16,27 @@ type Props = { locale: Locale };
 const { locale } = Astro.props;
 const featured = getFeaturedProducts();
 const badges = [
-  t(locale, "trust.organic"),
-  t(locale, "trust.halal"),
-  t(locale, "trust.pirt"),
-  t(locale, "trust.zerowaste"),
+  { cert: "organic" as const, label: t(locale, "trust.organic") },
+  { cert: "halal" as const, label: t(locale, "trust.halal") },
+  { cert: "pirt" as const, label: t(locale, "trust.pirt") },
+  { cert: "zerowaste" as const, label: t(locale, "trust.zerowaste") },
 ];
 const markets = [
-  { title: t(locale, "home.market.sea"), sub: t(locale, "home.market.seaSub") },
-  { title: t(locale, "home.market.me"), sub: t(locale, "home.market.meSub") },
-  { title: t(locale, "home.market.eu"), sub: t(locale, "home.market.euSub") },
+  {
+    title: t(locale, "home.market.sea"),
+    sub: t(locale, "home.market.seaSub"),
+    Icon: Globe,
+  },
+  {
+    title: t(locale, "home.market.me"),
+    sub: t(locale, "home.market.meSub"),
+    Icon: Landmark,
+  },
+  {
+    title: t(locale, "home.market.eu"),
+    sub: t(locale, "home.market.euSub"),
+    Icon: Building,
+  },
 ];
 ---
 
@@ -45,32 +64,44 @@ const markets = [
       <div class="mt-8 flex flex-wrap gap-3">
         <LocaleLink
           href="/products"
-          class="rounded-lg bg-brand-green px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-forest"
+          class="inline-flex items-center gap-2 rounded-lg bg-brand-green px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-forest"
         >
           {t(locale, "hero.browse")}
+          <ArrowRight size={16} aria-hidden="true" />
         </LocaleLink>
         <LocaleLink
           href="/contact"
-          class="rounded-lg border-2 border-brand-green bg-white px-5 py-3 text-sm font-semibold text-brand-green hover:bg-brand-sage/20"
+          class="inline-flex items-center gap-2 rounded-lg border-2 border-brand-green bg-white px-5 py-3 text-sm font-semibold text-brand-green hover:bg-brand-sage/20"
         >
           {t(locale, "hero.quote")}
         </LocaleLink>
       </div>
     </div>
     <div
-      class="relative overflow-hidden rounded-3xl border border-brand-sage/40 bg-gradient-to-br from-brand-green to-brand-forest p-8 text-white shadow-lg min-h-[260px] flex flex-col justify-end"
+      class="relative min-h-[260px] overflow-hidden rounded-3xl border border-brand-sage/40 shadow-lg md:min-h-[320px]"
     >
-      <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/10"></div>
-      <div class="absolute bottom-16 right-10 h-24 w-24 rounded-full bg-brand-sage/30"></div>
-      <p class="relative text-sm font-medium uppercase tracking-widest text-brand-sage">
-        {t(locale, "hero.panelLabel")}
-      </p>
-      <p class="relative mt-2 text-2xl font-bold">
-        {t(locale, "hero.panelProducts")}
-      </p>
-      <p class="relative mt-2 text-sm text-white/80">
-        {t(locale, "hero.panelTrust")}
-      </p>
+      <img
+        src="/process/farm.jpg"
+        alt={t(locale, "process.farm.alt")}
+        width={1200}
+        height={900}
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-brand-forest/90 via-brand-forest/45 to-brand-forest/15"
+      >
+      </div>
+      <div class="relative flex h-full min-h-[260px] flex-col justify-end p-8 text-white md:min-h-[320px]">
+        <p class="text-sm font-medium uppercase tracking-widest text-brand-sage">
+          {t(locale, "hero.panelLabel")}
+        </p>
+        <p class="mt-2 text-2xl font-bold">
+          {t(locale, "hero.panelProducts")}
+        </p>
+        <p class="mt-2 text-sm text-white/80">
+          {t(locale, "hero.panelTrust")}
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -79,12 +110,12 @@ const markets = [
   <div
     class="mx-auto flex max-w-6xl flex-wrap justify-center gap-3 px-4 py-6 md:gap-4 md:px-6"
   >
-    {badges.map((label) => (
+    {badges.map((badge) => (
       <span
-        class="inline-flex items-center gap-2 rounded-full border border-brand-sage/50 bg-brand-cream px-4 py-2 text-sm font-semibold text-brand-forest"
+        class="inline-flex items-center gap-2 rounded-full border border-brand-sage/50 bg-brand-cream px-3 py-1.5 text-sm font-semibold text-brand-forest"
       >
-        <span class="h-2 w-2 rounded-full bg-brand-green"></span>
-        {label}
+        <CertMark cert={badge.cert} size="sm" alt={badge.label} />
+        {badge.label}
       </span>
     ))}
   </div>
@@ -96,25 +127,34 @@ const markets = [
   <div
     class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 md:flex-row md:items-center md:justify-between md:px-6"
   >
-    <div>
-      <p class="text-xs font-semibold uppercase tracking-wider text-brand-earth">
-        {t(locale, "expo.badge")}
-      </p>
-      <h2 class="mt-1 text-xl font-bold text-brand-forest md:text-2xl">
-        {t(locale, "expo.title")}
-      </h2>
-      <p class="mt-1 text-sm font-medium text-brand-green">
-        {t(locale, "expo.dates")}
-      </p>
-      <p class="mt-2 max-w-2xl text-sm text-brand-muted">
-        {t(locale, "expo.body")}
-      </p>
+    <div class="flex gap-3">
+      <span
+        class="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-earth/15 text-brand-forest"
+      >
+        <CalendarDays size={20} aria-hidden="true" />
+      </span>
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-brand-earth">
+          {t(locale, "expo.badge")}
+        </p>
+        <h2 class="mt-1 text-xl font-bold text-brand-forest md:text-2xl">
+          {t(locale, "expo.title")}
+        </h2>
+        <p class="mt-1 inline-flex items-center gap-1.5 text-sm font-medium text-brand-green">
+          <MapPin size={14} aria-hidden="true" />
+          {t(locale, "expo.dates")}
+        </p>
+        <p class="mt-2 max-w-2xl text-sm text-brand-muted">
+          {t(locale, "expo.body")}
+        </p>
+      </div>
     </div>
     <LocaleLink
-      href="/contact"
-      class="shrink-0 rounded-lg bg-brand-forest px-5 py-3 text-center text-sm font-semibold text-white hover:bg-brand-green"
+      href="/contact?matching=1"
+      class="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-brand-forest px-5 py-3 text-center text-sm font-semibold text-white hover:bg-brand-green"
     >
       {t(locale, "expo.cta")}
+      <ArrowRight size={16} aria-hidden="true" />
     </LocaleLink>
   </div>
 </section>
@@ -129,9 +169,10 @@ const markets = [
     </div>
     <LocaleLink
       href="/products"
-      class="text-sm font-semibold text-brand-green hover:text-brand-forest"
+      class="inline-flex items-center gap-1 text-sm font-semibold text-brand-green hover:text-brand-forest"
     >
-      {t(locale, "home.viewAll")} →
+      {t(locale, "home.viewAll")}
+      <ArrowRight size={16} aria-hidden="true" />
     </LocaleLink>
   </div>
   <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -149,7 +190,10 @@ const markets = [
     <div class="grid gap-5 md:grid-cols-3">
       {markets.map((m) => (
         <div class="rounded-2xl border border-brand-sage/40 bg-white p-6 shadow-sm">
-          <h3 class="text-lg font-bold text-brand-forest">{m.title}</h3>
+          <span class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-brand-green/12 text-brand-green">
+            <m.Icon size={22} aria-hidden="true" />
+          </span>
+          <h3 class="mt-4 text-lg font-bold text-brand-forest">{m.title}</h3>
           <p class="mt-2 text-sm text-brand-muted">{m.sub}</p>
         </div>
       ))}

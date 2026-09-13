@@ -1,4 +1,5 @@
 ---
+import ArrowRight from "@lucide/astro/icons/arrow-right";
 import LocaleLink from "./LocaleLink.astro";
 import { processSteps } from "@/data/process";
 import { t, type Locale } from "@/i18n/dictionaries";
@@ -19,9 +20,10 @@ const { locale, showCta = false } = Astro.props;
       {showCta && (
         <LocaleLink
           href="/trust"
-          class="text-sm font-semibold text-brand-green hover:text-brand-forest"
+          class="inline-flex items-center gap-1 text-sm font-semibold text-brand-green hover:text-brand-forest"
         >
-          {t(locale, "process.cta")} →
+          {t(locale, "process.cta")}
+          <ArrowRight size={16} aria-hidden="true" />
         </LocaleLink>
       )}
     </div>

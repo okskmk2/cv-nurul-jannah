@@ -1,11 +1,16 @@
 ---
+import Download from "@lucide/astro/icons/download";
+import Mail from "@lucide/astro/icons/mail";
+import MessageCircle from "@lucide/astro/icons/message-circle";
 import { ContactForm } from "./react/ContactForm";
 import { t, type Locale } from "@/i18n/dictionaries";
+import { isPlaceholderWhatsApp } from "@/lib/site";
 
 type Props = { locale: Locale };
 const { locale } = Astro.props;
 const email = t(locale, "common.emailValue");
 const whatsapp = t(locale, "common.whatsappValue");
+const showWhatsapp = !isPlaceholderWhatsApp(whatsapp);
 const waDigits = whatsapp.replace(/\D/g, "");
 ---
 
@@ -26,38 +31,51 @@ const waDigits = whatsapp.replace(/\D/g, "");
           {t(locale, "contact.direct")}
         </h2>
         <dl class="mt-4 space-y-3 text-sm">
-          <div>
-            <dt class="font-medium text-brand-muted">{t(locale, "contact.email")}</dt>
-            <dd>
-              <a
-                class="font-semibold text-brand-green hover:underline"
-                href={`mailto:${email}`}
-              >
-                {email}
-              </a>
-            </dd>
+          <div class="flex items-start gap-3">
+            <span class="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green/12 text-brand-green">
+              <Mail size={16} aria-hidden="true" />
+            </span>
+            <div>
+              <dt class="font-medium text-brand-muted">{t(locale, "contact.email")}</dt>
+              <dd>
+                <a
+                  class="font-semibold text-brand-green hover:underline"
+                  href={`mailto:${email}`}
+                >
+                  {email}
+                </a>
+              </dd>
+            </div>
           </div>
-          <div>
-            <dt class="font-medium text-brand-muted">
-              {t(locale, "contact.whatsapp")}
-            </dt>
-            <dd>
-              <a
-                class="font-semibold text-brand-green hover:underline"
-                href={`https://wa.me/${waDigits}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {whatsapp}
-              </a>
-            </dd>
+          {showWhatsapp && (
+          <div class="flex items-start gap-3">
+            <span class="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green/12 text-brand-green">
+              <MessageCircle size={16} aria-hidden="true" />
+            </span>
+            <div>
+              <dt class="font-medium text-brand-muted">
+                {t(locale, "contact.whatsapp")}
+              </dt>
+              <dd>
+                <a
+                  class="font-semibold text-brand-green hover:underline"
+                  href={`https://wa.me/${waDigits}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {whatsapp}
+                </a>
+              </dd>
+            </div>
           </div>
+          )}
         </dl>
         <a
           href="/catalog.pdf"
           download="CV-Nurul-Jannah-Moringga-Catalog.pdf"
-          class="mt-6 block rounded-lg bg-brand-green py-2.5 text-center text-sm font-semibold text-white hover:bg-brand-forest"
+          class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand-green py-2.5 text-center text-sm font-semibold text-white hover:bg-brand-forest"
         >
+          <Download size={16} aria-hidden="true" />
           {t(locale, "contact.downloadCatalog")}
         </a>
       </div>

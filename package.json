@@ -16,7 +16,9 @@
     "@astrojs/react": "^4.4.2",
     "@fontsource/geist-mono": "^5.2.7",
     "@fontsource/geist-sans": "^5.2.8",
+    "@lucide/astro": "^1.45.0",
     "astro": "^5.16.6",
+    "lucide-react": "^1.45.0",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },

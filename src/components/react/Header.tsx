@@ -1,3 +1,4 @@
+import { FileText, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { t, type Locale } from "@/i18n/dictionaries";
 import { localizedPath } from "@/i18n/routing";
@@ -65,8 +66,9 @@ export function Header({
           <LanguageSwitcher locale={locale} pathname={pathname} />
           <a
             href={hrefFor("/contact")}
-            className="rounded-lg bg-brand-green px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-forest"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-brand-green px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-forest"
           >
+            <FileText className="h-4 w-4" aria-hidden />
             {t(locale, "nav.requestQuote")}
           </a>
         </div>
@@ -81,27 +83,9 @@ export function Header({
         >
           <span className="sr-only">Menu</span>
           {open ? (
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M6 6l12 12M18 6L6 18" />
-            </svg>
+            <X className="h-5 w-5" aria-hidden />
           ) : (
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            </svg>
+            <Menu className="h-5 w-5" aria-hidden />
           )}
         </button>
       </div>
@@ -132,8 +116,9 @@ export function Header({
             <a
               href={hrefFor("/contact")}
               onClick={() => setOpen(false)}
-              className="rounded-lg bg-brand-green px-4 py-2.5 text-center text-sm font-semibold text-white"
+              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-brand-green px-4 py-2.5 text-center text-sm font-semibold text-white"
             >
+              <FileText className="h-4 w-4" aria-hidden />
               {t(locale, "nav.requestQuote")}
             </a>
           </div>

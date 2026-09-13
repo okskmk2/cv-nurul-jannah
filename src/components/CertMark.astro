@@ -1,0 +1,55 @@
+---
+import FileBadge from "@lucide/astro/icons/file-badge";
+import Recycle from "@lucide/astro/icons/recycle";
+
+export type CertId = "halal" | "organic" | "pirt" | "coa" | "zerowaste";
+
+type Props = {
+  cert: CertId;
+  size?: "sm" | "md" | "lg";
+  alt: string;
+  class?: string;
+};
+
+const { cert, size = "md", alt, class: className = "" } = Astro.props;
+
+const box = size === "sm" ? "h-9 w-9" : size === "lg" ? "h-20 w-20" : "h-16 w-16";
+const iconSize = size === "sm" ? 18 : size === "lg" ? 36 : 28;
+
+const src: Record<Exclude<CertId, "coa" | "zerowaste">, string> = {
+  halal: "/certs/halal-indonesia.svg",
+  organic: "/certs/organik-indonesia.svg",
+  pirt: "/certs/pirt.svg",
+};
+---
+
+<span
+  class:list={[
+    "inline-flex shrink-0 items-center justify-center overflow-hidden",
+    cert === "halal" || cert === "organic" || cert === "pirt"
+      ? "bg-white"
+      : "rounded-full bg-brand-green/12 text-brand-green",
+    box,
+    className,
+  ]}
+>
+  {cert === "coa" ? (
+    <FileBadge size={iconSize} stroke-width={1.8} aria-hidden="true" />
+  ) : cert === "zerowaste" ? (
+    <Recycle size={iconSize} stroke-width={1.8} aria-hidden="true" />
+  ) : (
+    <img
+      src={src[cert]}
+      alt={alt}
+      width={80}
+      height={80}
+      class:list={[
+        "h-full w-full",
+        cert === "halal" ? "object-contain p-0.5" : "object-contain",
+      ]}
+    />
+  )}
+  {(cert === "coa" || cert === "zerowaste") && (
+    <span class="sr-only">{alt}</span>
+  )}
+</span>

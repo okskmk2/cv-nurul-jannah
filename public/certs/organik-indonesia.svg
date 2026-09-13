@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Organik Indonesia">
+  <circle cx="100" cy="100" r="98" fill="#ffffff"/>
+  <path
+    d="M6.5 110 C50 96 150 96 193.5 110 A94 94 0 1 1 6.5 110 Z"
+    fill="#2D9A3A"
+  />
+  <circle cx="100" cy="100" r="96" fill="none" stroke="#2D9A3A" stroke-width="4"/>
+  <text
+    x="46"
+    y="92"
+    text-anchor="middle"
+    font-family="Georgia, 'Palatino Linotype', Palatino, serif"
+    font-size="22"
+    font-weight="700"
+    fill="#8B1A12"
+  >OR</text>
+  <g transform="translate(70,58)">
+    <circle cx="24" cy="24" r="23" fill="#2D9A3A"/>
+    <circle cx="24" cy="24" r="18" fill="#F2C94C"/>
+    <circle cx="24" cy="24" r="12" fill="#2D9A3A"/>
+    <path d="M24 4 Q32 24 24 44 Q16 24 24 4 Z" fill="#E8F6EA" opacity="0.9"/>
+    <path d="M4 24 Q24 16 44 24 Q24 32 4 24 Z" fill="#E8F6EA" opacity="0.55"/>
+  </g>
+  <text
+    x="148"
+    y="92"
+    text-anchor="middle"
+    font-family="Georgia, 'Palatino Linotype', Palatino, serif"
+    font-size="22"
+    font-weight="700"
+    fill="#8B1A12"
+    letter-spacing="0.5"
+  >ANIK</text>
+  <text
+    x="100"
+    y="150"
+    text-anchor="middle"
+    font-family="Georgia, 'Palatino Linotype', Palatino, serif"
+    font-size="16"
+    font-weight="700"
+    fill="#ffffff"
+    letter-spacing="2.4"
+  >INDONESIA</text>
+</svg>

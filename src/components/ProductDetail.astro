@@ -1,4 +1,7 @@
 ---
+import Download from "@lucide/astro/icons/download";
+import FileText from "@lucide/astro/icons/file-text";
+import CertMark from "./CertMark.astro";
 import LocaleLink from "./LocaleLink.astro";
 import type { Product } from "@/data/products";
 import { productImagePath } from "@/data/products";
@@ -41,6 +44,11 @@ const alt = `${name} — Moringga kelor, CV. Nurul Jannah`;
       <p class="mt-4 text-base text-brand-muted">
         {product.description[locale]}
       </p>
+      <div class="mt-5 flex flex-wrap items-center gap-3">
+        <CertMark cert="organic" size="sm" alt={t(locale, "trust.organic")} />
+        <CertMark cert="halal" size="sm" alt={t(locale, "trust.halal")} />
+        <CertMark cert="pirt" size="sm" alt={t(locale, "trust.pirt")} />
+      </div>
       <dl class="mt-8 grid gap-4 sm:grid-cols-2">
         <div class="rounded-2xl border border-brand-sage/40 bg-white p-4">
           <dt class="text-xs font-semibold uppercase tracking-wider text-brand-muted">
@@ -61,16 +69,18 @@ const alt = `${name} — Moringga kelor, CV. Nurul Jannah`;
       </dl>
       <div class="mt-8 flex flex-wrap gap-3">
         <LocaleLink
-          href={`/contact?product=${encodeURIComponent(product.name.en)}`}
-          class="rounded-lg bg-brand-green px-5 py-3 text-sm font-semibold text-white hover:bg-brand-forest"
+          href={`/contact?product=${encodeURIComponent(product.slug)}`}
+          class="inline-flex items-center gap-2 rounded-lg bg-brand-green px-5 py-3 text-sm font-semibold text-white hover:bg-brand-forest"
         >
+          <FileText size={16} aria-hidden="true" />
           {t(locale, "products.inquire")}
         </LocaleLink>
         <a
           href="/catalog.pdf"
           download="CV-Nurul-Jannah-Moringga-Catalog.pdf"
-          class="rounded-lg border-2 border-brand-green bg-white px-5 py-3 text-sm font-semibold text-brand-green hover:bg-brand-sage/20"
+          class="inline-flex items-center gap-2 rounded-lg border-2 border-brand-green bg-white px-5 py-3 text-sm font-semibold text-brand-green hover:bg-brand-sage/20"
         >
+          <Download size={16} aria-hidden="true" />
           {t(locale, "contact.downloadCatalog")}
         </a>
       </div>

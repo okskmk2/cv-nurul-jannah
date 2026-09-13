@@ -1,4 +1,22 @@
 ---
+import CalendarDays from "@lucide/astro/icons/calendar-days";
+import Download from "@lucide/astro/icons/download";
+import FileText from "@lucide/astro/icons/file-text";
+import Gauge from "@lucide/astro/icons/gauge";
+import Globe from "@lucide/astro/icons/globe";
+import Handshake from "@lucide/astro/icons/handshake";
+import HeartHandshake from "@lucide/astro/icons/heart-handshake";
+import Landmark from "@lucide/astro/icons/landmark";
+import MapPinned from "@lucide/astro/icons/map-pinned";
+import MessageCircle from "@lucide/astro/icons/message-circle";
+import Package from "@lucide/astro/icons/package";
+import Recycle from "@lucide/astro/icons/recycle";
+import ShieldCheck from "@lucide/astro/icons/shield-check";
+import Sprout from "@lucide/astro/icons/sprout";
+import Trees from "@lucide/astro/icons/trees";
+import UserRound from "@lucide/astro/icons/user-round";
+import Users from "@lucide/astro/icons/users";
+import CertMark from "./CertMark.astro";
 import LocaleLink from "./LocaleLink.astro";
 import ProcessGallery from "./ProcessGallery.astro";
 import { t, type Locale } from "@/i18n/dictionaries";
@@ -7,34 +25,50 @@ type Props = { locale: Locale };
 const { locale } = Astro.props;
 
 const certs = [
-  { title: t(locale, "trust.cert.organic"), desc: t(locale, "trust.cert.organicDesc") },
-  { title: t(locale, "trust.cert.halal"), desc: t(locale, "trust.cert.halalDesc") },
-  { title: t(locale, "trust.cert.pirt"), desc: t(locale, "trust.cert.pirtDesc") },
-  { title: t(locale, "trust.cert.coa"), desc: t(locale, "trust.cert.coaDesc") },
+  {
+    cert: "organic" as const,
+    title: t(locale, "trust.cert.organic"),
+    desc: t(locale, "trust.cert.organicDesc"),
+  },
+  {
+    cert: "halal" as const,
+    title: t(locale, "trust.cert.halal"),
+    desc: t(locale, "trust.cert.halalDesc"),
+  },
+  {
+    cert: "pirt" as const,
+    title: t(locale, "trust.cert.pirt"),
+    desc: t(locale, "trust.cert.pirtDesc"),
+  },
+  {
+    cert: "coa" as const,
+    title: t(locale, "trust.cert.coa"),
+    desc: t(locale, "trust.cert.coaDesc"),
+  },
 ];
 const caps = [
-  { title: t(locale, "trust.cap.1"), sub: t(locale, "trust.cap.1Sub") },
-  { title: t(locale, "trust.cap.2"), sub: t(locale, "trust.cap.2Sub") },
-  { title: t(locale, "trust.cap.3"), sub: t(locale, "trust.cap.3Sub") },
-  { title: t(locale, "trust.cap.4"), sub: t(locale, "trust.cap.4Sub") },
+  { title: t(locale, "trust.cap.1"), sub: t(locale, "trust.cap.1Sub"), Icon: Package },
+  { title: t(locale, "trust.cap.2"), sub: t(locale, "trust.cap.2Sub"), Icon: Recycle },
+  { title: t(locale, "trust.cap.3"), sub: t(locale, "trust.cap.3Sub"), Icon: Users },
+  { title: t(locale, "trust.cap.4"), sub: t(locale, "trust.cap.4Sub"), Icon: MessageCircle },
 ];
 const tracks = [
-  { title: t(locale, "trust.track.1"), sub: t(locale, "trust.track.1Sub") },
-  { title: t(locale, "trust.track.2"), sub: t(locale, "trust.track.2Sub") },
-  { title: t(locale, "trust.track.3"), sub: t(locale, "trust.track.3Sub") },
-  { title: t(locale, "trust.track.4"), sub: t(locale, "trust.track.4Sub") },
+  { title: t(locale, "trust.track.1"), sub: t(locale, "trust.track.1Sub"), Icon: Globe },
+  { title: t(locale, "trust.track.2"), sub: t(locale, "trust.track.2Sub"), Icon: Landmark },
+  { title: t(locale, "trust.track.3"), sub: t(locale, "trust.track.3Sub"), Icon: MapPinned },
+  { title: t(locale, "trust.track.4"), sub: t(locale, "trust.track.4Sub"), Icon: CalendarDays },
 ];
 const originPoints = [
-  t(locale, "trust.origin.1"),
-  t(locale, "trust.origin.2"),
-  t(locale, "trust.origin.3"),
-  t(locale, "trust.origin.4"),
+  { text: t(locale, "trust.origin.1"), Icon: Sprout },
+  { text: t(locale, "trust.origin.2"), Icon: Trees },
+  { text: t(locale, "trust.origin.3"), Icon: Recycle },
+  { text: t(locale, "trust.origin.4"), Icon: UserRound },
 ];
 const values = [
-  { title: t(locale, "trust.value.1"), sub: t(locale, "trust.value.1Sub") },
-  { title: t(locale, "trust.value.2"), sub: t(locale, "trust.value.2Sub") },
-  { title: t(locale, "trust.value.3"), sub: t(locale, "trust.value.3Sub") },
-  { title: t(locale, "trust.value.4"), sub: t(locale, "trust.value.4Sub") },
+  { title: t(locale, "trust.value.1"), sub: t(locale, "trust.value.1Sub"), Icon: ShieldCheck },
+  { title: t(locale, "trust.value.2"), sub: t(locale, "trust.value.2Sub"), Icon: Handshake },
+  { title: t(locale, "trust.value.3"), sub: t(locale, "trust.value.3Sub"), Icon: HeartHandshake },
+  { title: t(locale, "trust.value.4"), sub: t(locale, "trust.value.4Sub"), Icon: Gauge },
 ];
 ---
 
@@ -54,11 +88,7 @@ const values = [
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
     {certs.map((c) => (
       <div class="rounded-2xl border border-brand-sage/40 bg-white p-5 shadow-sm">
-        <div
-          class="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/15 text-brand-green font-bold"
-        >
-          ✓
-        </div>
+        <CertMark cert={c.cert} size="md" alt={c.title} class="mb-3" />
         <h3 class="font-bold text-brand-forest">{c.title}</h3>
         <p class="mt-1 text-sm text-brand-muted">{c.desc}</p>
       </div>
@@ -97,11 +127,13 @@ const values = [
         {t(locale, "trust.origin")}
       </h2>
       <p class="mt-3 text-brand-muted">{t(locale, "trust.originBody")}</p>
-      <ul class="mt-5 space-y-2">
+      <ul class="mt-5 space-y-3">
         {originPoints.map((item) => (
-          <li class="flex items-start gap-2 text-sm text-brand-forest">
-            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green"></span>
-            {item}
+          <li class="flex items-start gap-3 text-sm text-brand-forest">
+            <span class="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-green/15 text-brand-green">
+              <item.Icon size={14} aria-hidden="true" />
+            </span>
+            {item.text}
           </li>
         ))}
       </ul>
@@ -122,7 +154,10 @@ const values = [
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
     {values.map((v) => (
       <div class="rounded-2xl border border-brand-sage/40 bg-white p-5 shadow-sm">
-        <p class="font-bold text-brand-green">{v.title}</p>
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/12 text-brand-green">
+          <v.Icon size={20} aria-hidden="true" />
+        </span>
+        <p class="mt-3 font-bold text-brand-green">{v.title}</p>
         <p class="mt-1 text-sm text-brand-muted">{v.sub}</p>
       </div>
     ))}
@@ -139,6 +174,9 @@ const values = [
         <div
           class="rounded-2xl border border-brand-sage/40 bg-brand-cream/50 p-5 text-center shadow-sm"
         >
+          <span class="mx-auto mb-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-brand-green shadow-sm">
+            <c.Icon size={20} aria-hidden="true" />
+          </span>
           <p class="text-2xl font-bold text-brand-green">{c.title}</p>
           <p class="mt-1 text-sm text-brand-muted">{c.sub}</p>
         </div>
@@ -156,7 +194,10 @@ const values = [
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {tracks.map((item) => (
         <div class="rounded-2xl bg-white p-5 border border-brand-sage/30 shadow-sm">
-          <h3 class="font-bold text-brand-forest">{item.title}</h3>
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-green/12 text-brand-green">
+            <item.Icon size={20} aria-hidden="true" />
+          </span>
+          <h3 class="mt-3 font-bold text-brand-forest">{item.title}</h3>
           <p class="mt-1 text-sm text-brand-muted">{item.sub}</p>
         </div>
       ))}
@@ -175,15 +216,17 @@ const values = [
     <div class="mt-8 flex flex-wrap justify-center gap-3">
       <LocaleLink
         href="/contact"
-        class="rounded-lg bg-brand-green px-5 py-3 text-sm font-semibold text-white hover:bg-brand-forest"
+        class="inline-flex items-center gap-2 rounded-lg bg-brand-green px-5 py-3 text-sm font-semibold text-white hover:bg-brand-forest"
       >
+        <FileText size={16} aria-hidden="true" />
         {t(locale, "trust.docsCta")}
       </LocaleLink>
       <a
         href="/catalog.pdf"
         download="CV-Nurul-Jannah-Moringga-Catalog.pdf"
-        class="rounded-lg border-2 border-brand-green bg-white px-5 py-3 text-sm font-semibold text-brand-green hover:bg-white/80"
+        class="inline-flex items-center gap-2 rounded-lg border-2 border-brand-green bg-white px-5 py-3 text-sm font-semibold text-brand-green hover:bg-white/80"
       >
+        <Download size={16} aria-hidden="true" />
         {t(locale, "trust.catalogCta")}
       </a>
     </div>

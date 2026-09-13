@@ -1,4 +1,4 @@
-# CV. Nurul Jannah — Moringga (Kelor / Moringa)
+# CV. Nurul Jannah — Moringga (Kelor)
 
 Astro site for **CV. Nurul Jannah**, Madura MSME producing **Moringga** kelor foods from Sumenep (Pakandangan Sangra, Bluto). Theme: *Sehat Dengan Keajaiban Kelor* / *Healthy With the Magic of Kelor*.
 
@@ -38,12 +38,12 @@ Other locales: `/id`, `/ko`, `/ar` plus the same paths.
 
 ## Products (Moringga)
 
-1. Moringa Coffee / Kopi Kelor
-2. Moringa Tea / Teh Kelor
-3. Moringa Crackers / Krupuk Kelor
-4. Moringa Powder / Powder Kelor
-5. Moringa Noodle / Mie Kelor
-6. Moringa Stick / Stick Kelor
+1. Moringga Coffee / Kopi Kelor
+2. Moringga Tea / Teh Kelor
+3. Moringga Crackers / Krupuk Kelor
+4. Moringga Powder / Powder Kelor
+5. Moringga Noodle / Mie Kelor
+6. Moringga Stick / Stick Kelor
 
 ## Run locally
 

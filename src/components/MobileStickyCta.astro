@@ -1,4 +1,5 @@
 ---
+import FileText from "@lucide/astro/icons/file-text";
 import LocaleLink from "./LocaleLink.astro";
 import { t, type Locale } from "@/i18n/dictionaries";
 
@@ -10,8 +11,9 @@ const { locale } = Astro.props;
 >
   <LocaleLink
     href="/contact"
-    class="block w-full rounded-lg bg-brand-green py-3 text-center text-sm font-semibold text-white shadow-md"
+    class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand-green py-3 text-center text-sm font-semibold text-white shadow-md"
   >
+    <FileText size={16} aria-hidden="true" />
     {t(locale, "cta.sticky")}
   </LocaleLink>
 </div>
