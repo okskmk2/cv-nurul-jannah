@@ -45,9 +45,17 @@ const alt = `${name} — Moringa kelor, CV. Nurul Jannah`;
         {product.description[locale]}
       </p>
       <div class="mt-5 flex flex-wrap items-center gap-3">
-        <CertMark cert="organic" size="sm" alt={t(locale, "trust.organic")} />
-        <CertMark cert="halal" size="sm" alt={t(locale, "trust.halal")} />
-        <CertMark cert="pirt" size="sm" alt={t(locale, "trust.pirt")} />
+        <div class="flex items-center gap-2">
+          <CertMark cert="organic" size="sm" alt={t(locale, "trust.organic")} />
+          <CertMark cert="halal" size="sm" alt={t(locale, "trust.halal")} />
+          <CertMark cert="pirt" size="sm" alt={t(locale, "trust.pirt")} />
+        </div>
+        <LocaleLink
+          href="/trust#certs"
+          class="inline-flex items-center gap-1 text-xs font-semibold text-brand-green hover:text-brand-forest hover:underline"
+        >
+          {t(locale, "products.viewCert")} →
+        </LocaleLink>
       </div>
       <dl class="mt-8 grid gap-4 sm:grid-cols-2">
         <div class="rounded-2xl border border-brand-sage/40 bg-white p-4">
