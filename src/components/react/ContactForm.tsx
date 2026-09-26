@@ -111,11 +111,21 @@ export function ContactForm({ locale }: { locale: Locale }) {
     const params = new URLSearchParams(window.location.search);
     const productHint = params.get("product");
     const matchingHint = params.get("matching");
+    const certHint = params.get("cert");
     const slugs = productHint ? resolveProductSlugs(productHint) : [];
+    const validCert =
+      certHint && (CERTIFICATIONS as readonly string[]).includes(certHint)
+        ? (certHint as Certification)
+        : null;
+
     setForm((prev) => ({
       ...prev,
       productSlugs: slugs.length ? slugs : prev.productSlugs,
       matching: matchingHint === "1" ? "yes" : prev.matching,
+      certifications:
+        validCert && !prev.certifications.includes(validCert)
+          ? [...prev.certifications, validCert]
+          : prev.certifications,
     }));
     if (matchingHint === "1") setMatchingOpen(true);
   }, []);

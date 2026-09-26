@@ -1,6 +1,10 @@
 ---
+import BadgeCheck from "@lucide/astro/icons/badge-check";
 import CalendarDays from "@lucide/astro/icons/calendar-days";
+import Clock from "@lucide/astro/icons/clock";
 import Download from "@lucide/astro/icons/download";
+import ExternalLink from "@lucide/astro/icons/external-link";
+import Eye from "@lucide/astro/icons/eye";
 import FileText from "@lucide/astro/icons/file-text";
 import Gauge from "@lucide/astro/icons/gauge";
 import Globe from "@lucide/astro/icons/globe";
@@ -16,6 +20,7 @@ import Sprout from "@lucide/astro/icons/sprout";
 import Trees from "@lucide/astro/icons/trees";
 import UserRound from "@lucide/astro/icons/user-round";
 import Users from "@lucide/astro/icons/users";
+import X from "@lucide/astro/icons/x";
 import CertMark from "./CertMark.astro";
 import LocaleLink from "./LocaleLink.astro";
 import ProcessGallery from "./ProcessGallery.astro";
@@ -29,21 +34,39 @@ const certs = [
     cert: "organic" as const,
     title: t(locale, "trust.cert.organic"),
     desc: t(locale, "trust.cert.organicDesc"),
+    hasDoc: false,
+    isRenewing: false,
   },
   {
     cert: "halal" as const,
     title: t(locale, "trust.cert.halal"),
     desc: t(locale, "trust.cert.halalDesc"),
+    hasDoc: false,
+    isRenewing: true,
+    regNo: t(locale, "trust.cert.halalNo"),
+    authority: t(locale, "trust.cert.halalAuthority"),
+    docUrl: "/certs/halal-cert.jpg",
+    downloadName: "CV-Nurul-Jannah-Halal-Certificate-07100029141115.jpg",
+    fileSize: "187 KB",
   },
   {
     cert: "pirt" as const,
     title: t(locale, "trust.cert.pirt"),
     desc: t(locale, "trust.cert.pirtDesc"),
+    hasDoc: true,
+    isRenewing: false,
+    regNo: t(locale, "trust.cert.pirtNo"),
+    authority: t(locale, "trust.cert.pirtAuthority"),
+    docUrl: "/certs/pirt-cert.jpg",
+    downloadName: "CV-Nurul-Jannah-PIRT-Certificate-5063529020342-26.jpg",
+    fileSize: "307 KB",
   },
   {
     cert: "coa" as const,
     title: t(locale, "trust.cert.coa"),
     desc: t(locale, "trust.cert.coaDesc"),
+    hasDoc: false,
+    isRenewing: false,
   },
 ];
 const caps = [
@@ -81,16 +104,132 @@ const values = [
   </div>
 </section>
 
-<section class="mx-auto max-w-6xl px-4 py-12 md:px-6">
-  <h2 class="mb-6 text-2xl font-bold text-brand-forest">
-    {t(locale, "trust.certs")}
-  </h2>
-  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+<section id="certs" class="mx-auto max-w-6xl px-4 py-12 md:px-6 scroll-mt-20">
+  <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <h2 class="text-2xl font-bold text-brand-forest md:text-3xl">
+        {t(locale, "trust.certs")}
+      </h2>
+      <p class="mt-1 text-sm text-brand-muted">
+        {t(locale, "trust.subtitle")}
+      </p>
+    </div>
+  </div>
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
     {certs.map((c) => (
-      <div class="rounded-2xl border border-brand-sage/40 bg-white p-5 shadow-sm">
-        <CertMark cert={c.cert} size="md" alt={c.title} class="mb-3" />
-        <h3 class="font-bold text-brand-forest">{c.title}</h3>
-        <p class="mt-1 text-sm text-brand-muted">{c.desc}</p>
+      <div class="flex flex-col justify-between rounded-2xl border border-brand-sage/40 bg-white p-5 shadow-sm transition hover:shadow-md">
+        <div>
+          <div class="flex items-start justify-between gap-2 mb-3">
+            <CertMark cert={c.cert} size="md" alt={c.title} />
+            {c.isRenewing ? (
+              <span class="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2.5 py-1 text-[11px] font-semibold text-amber-800 border border-amber-200/90">
+                <Clock size={13} class="text-amber-600" aria-hidden="true" />
+                {t(locale, "trust.cert.renewal")}
+              </span>
+            ) : c.hasDoc ? (
+              <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 border border-emerald-200/80">
+                <BadgeCheck size={13} class="text-emerald-600" aria-hidden="true" />
+                {t(locale, "trust.cert.verified")}
+              </span>
+            ) : null}
+          </div>
+
+          <h3 class="font-bold text-lg text-brand-forest">{c.title}</h3>
+
+          {(c.hasDoc || c.isRenewing) && c.regNo && (
+            <p class="mt-1.5 inline-block rounded bg-brand-cream/80 px-2 py-0.5 text-xs font-mono font-medium text-brand-forest/90 border border-brand-sage/40">
+              {c.regNo}
+            </p>
+          )}
+
+          <p class="mt-2 text-sm text-brand-muted leading-relaxed">{c.desc}</p>
+
+          {c.isRenewing ? (
+            <div class="mt-4 rounded-xl border border-amber-200/90 bg-amber-50/70 p-3 text-xs text-amber-900 shadow-2xs">
+              <div class="flex items-center gap-1.5 font-semibold text-amber-950 mb-1">
+                <Clock size={13} class="text-amber-600 shrink-0" aria-hidden="true" />
+                <span>{t(locale, "trust.cert.renewal")}</span>
+              </div>
+              <p class="leading-relaxed text-amber-800/95">{t(locale, "trust.cert.renewalNotice")}</p>
+            </div>
+          ) : c.hasDoc && c.docUrl ? (
+            <button
+              type="button"
+              class="group relative mt-4 block w-full overflow-hidden rounded-xl border border-brand-sage/40 bg-brand-cream/40 text-left transition hover:border-brand-green/60 hover:shadow-sm js-cert-trigger cursor-pointer"
+              data-cert-title={c.title}
+              data-cert-reg={c.regNo}
+              data-cert-authority={c.authority}
+              data-cert-src={c.docUrl}
+              data-cert-download={c.downloadName}
+              aria-label={`${c.title} ${t(locale, "trust.cert.preview")}`}
+            >
+              <div class="relative h-32 w-full overflow-hidden bg-white/70">
+                <img
+                  src={c.docUrl}
+                  alt={`${c.title} preview`}
+                  class="h-full w-full object-cover object-top transition duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 flex items-center justify-center bg-brand-forest/35 opacity-0 backdrop-blur-[1px] transition duration-200 group-hover:opacity-100">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-brand-forest shadow">
+                    <Eye size={13} aria-hidden="true" />
+                    {t(locale, "trust.cert.preview")}
+                  </span>
+                </div>
+              </div>
+            </button>
+          ) : null}
+        </div>
+
+        <div class="mt-5 pt-4 border-t border-brand-sage/25">
+          {c.isRenewing ? (
+            <LocaleLink
+              href="/contact?cert=halal#form"
+              class="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-amber-600 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-amber-700 transition"
+            >
+              <MessageCircle size={14} aria-hidden="true" />
+              {t(locale, "trust.cert.requestStatus")}
+            </LocaleLink>
+          ) : c.hasDoc && c.docUrl ? (
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-brand-sage/60 bg-white px-2.5 py-2 text-xs font-semibold text-brand-forest transition hover:bg-brand-cream hover:border-brand-sage js-cert-trigger cursor-pointer"
+                data-cert-title={c.title}
+                data-cert-reg={c.regNo}
+                data-cert-authority={c.authority}
+                data-cert-src={c.docUrl}
+                data-cert-download={c.downloadName}
+              >
+                <Eye size={14} aria-hidden="true" />
+                {t(locale, "trust.cert.preview")}
+              </button>
+              <a
+                href={c.docUrl}
+                download={c.downloadName}
+                class="inline-flex items-center justify-center gap-1.5 rounded-lg bg-brand-green px-2.5 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-brand-forest"
+              >
+                <Download size={14} aria-hidden="true" />
+                {t(locale, "trust.cert.download")}
+              </a>
+            </div>
+          ) : c.cert === "coa" ? (
+            <LocaleLink
+              href="/contact"
+              class="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-brand-sage/60 bg-white py-2 text-xs font-semibold text-brand-forest hover:bg-brand-cream transition"
+            >
+              <FileText size={14} aria-hidden="true" />
+              {t(locale, "trust.docsCta")}
+            </LocaleLink>
+          ) : (
+            <a
+              href="#origin"
+              class="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-brand-sage/40 bg-brand-cream/40 py-2 text-xs font-semibold text-brand-muted hover:text-brand-forest transition"
+            >
+              {t(locale, "process.cta")}
+            </a>
+          )}
+        </div>
       </div>
     ))}
   </div>
@@ -205,30 +344,275 @@ const values = [
   </div>
 </section>
 
-<section class="bg-brand-sage/25">
-  <div class="mx-auto max-w-6xl px-4 py-14 text-center md:px-6">
-    <h2 class="text-2xl font-bold text-brand-forest md:text-3xl">
-      {t(locale, "trust.docsTitle")}
-    </h2>
-    <p class="mx-auto mt-3 max-w-xl text-brand-muted">
-      {t(locale, "trust.docsSub")}
-    </p>
-    <div class="mt-8 flex flex-wrap justify-center gap-3">
+<section class="bg-brand-sage/25 border-t border-brand-sage/30">
+  <div class="mx-auto max-w-6xl px-4 py-14 md:px-6">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="text-2xl font-bold text-brand-forest md:text-3xl">
+        {t(locale, "trust.cert.hubTitle")}
+      </h2>
+      <p class="mt-3 text-brand-muted">
+        {t(locale, "trust.cert.hubSub")}
+      </p>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
+      <!-- Product Catalog -->
+      <div class="flex flex-col justify-between rounded-2xl border border-brand-sage/40 bg-white p-5 shadow-sm">
+        <div>
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-brand-green/12 text-brand-green mb-3">
+            <FileText size={18} aria-hidden="true" />
+          </span>
+          <h3 class="font-bold text-brand-forest">{t(locale, "trust.catalogCta")}</h3>
+          <p class="mt-1 text-xs text-brand-muted">PDF · 8.4 MB · 7 SKUs</p>
+        </div>
+        <a
+          href="/catalog.pdf"
+          download="CV-Nurul-Jannah-Moringa-Catalog.pdf"
+          class="mt-5 inline-flex items-center justify-center gap-2 rounded-lg border-2 border-brand-green bg-white px-4 py-2.5 text-xs font-semibold text-brand-green hover:bg-brand-sage/20 transition"
+        >
+          <Download size={14} aria-hidden="true" />
+          {t(locale, "trust.catalogCta")}
+        </a>
+      </div>
+
+      <!-- Halal Certificate -->
+      <div class="flex flex-col justify-between rounded-2xl border border-amber-200/80 bg-white p-5 shadow-sm">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-amber-50 text-amber-700 border border-amber-200">
+              <Clock size={18} aria-hidden="true" />
+            </span>
+            <span class="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2.5 py-0.5 text-[11px] font-semibold text-amber-800 border border-amber-200">
+              {t(locale, "trust.cert.renewal")}
+            </span>
+          </div>
+          <h3 class="font-bold text-brand-forest">{t(locale, "trust.cert.downloadHalal")}</h3>
+          <p class="mt-1 text-xs text-brand-muted">MUI East Java · {t(locale, "trust.cert.halalNo")}</p>
+          <p class="mt-3 text-xs text-amber-800/90 bg-amber-50/70 border border-amber-200/60 rounded-lg p-2.5 leading-relaxed">
+            {t(locale, "trust.cert.renewalNotice")}
+          </p>
+        </div>
+        <div class="mt-5">
+          <LocaleLink
+            href="/contact?cert=halal#form"
+            class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-amber-600 px-4 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-amber-700 transition"
+          >
+            <MessageCircle size={14} aria-hidden="true" />
+            {t(locale, "trust.cert.requestStatus")}
+          </LocaleLink>
+        </div>
+      </div>
+
+      <!-- P-IRT Certificate -->
+      <div class="flex flex-col justify-between rounded-2xl border border-brand-sage/40 bg-white p-5 shadow-sm">
+        <div>
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-700 mb-3 border border-emerald-200">
+            <BadgeCheck size={18} aria-hidden="true" />
+          </span>
+          <h3 class="font-bold text-brand-forest">{t(locale, "trust.cert.downloadPirt")}</h3>
+          <p class="mt-1 text-xs text-brand-muted">JPG · 307 KB · Sumenep Health Office</p>
+        </div>
+        <div class="mt-5 grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            class="inline-flex items-center justify-center gap-1 rounded-lg border border-brand-sage/60 bg-white px-2 py-2.5 text-xs font-semibold text-brand-forest hover:bg-brand-cream transition js-cert-trigger cursor-pointer"
+            data-cert-title={t(locale, "trust.cert.pirt")}
+            data-cert-reg={t(locale, "trust.cert.pirtNo")}
+            data-cert-authority={t(locale, "trust.cert.pirtAuthority")}
+            data-cert-src="/certs/pirt-cert.jpg"
+            data-cert-download="CV-Nurul-Jannah-PIRT-Certificate-5063529020342-26.jpg"
+          >
+            <Eye size={13} aria-hidden="true" />
+            {t(locale, "trust.cert.preview")}
+          </button>
+          <a
+            href="/certs/pirt-cert.jpg"
+            download="CV-Nurul-Jannah-PIRT-Certificate-5063529020342-26.jpg"
+            class="inline-flex items-center justify-center gap-1 rounded-lg bg-brand-green px-2 py-2.5 text-xs font-semibold text-white hover:bg-brand-forest transition"
+          >
+            <Download size={13} aria-hidden="true" />
+            {t(locale, "trust.cert.download")}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="mt-10 text-center">
       <LocaleLink
         href="/contact"
-        class="inline-flex items-center gap-2 rounded-lg bg-brand-green px-5 py-3 text-sm font-semibold text-white hover:bg-brand-forest"
+        class="inline-flex items-center gap-2 rounded-lg bg-brand-forest px-6 py-3 text-sm font-semibold text-white hover:bg-brand-green shadow-sm transition"
       >
         <FileText size={16} aria-hidden="true" />
         {t(locale, "trust.docsCta")}
       </LocaleLink>
-      <a
-        href="/catalog.pdf"
-        download="CV-Nurul-Jannah-Moringa-Catalog.pdf"
-        class="inline-flex items-center gap-2 rounded-lg border-2 border-brand-green bg-white px-5 py-3 text-sm font-semibold text-brand-green hover:bg-white/80"
-      >
-        <Download size={16} aria-hidden="true" />
-        {t(locale, "trust.catalogCta")}
-      </a>
     </div>
   </div>
 </section>
+
+<!-- Native Accessible Dialog for Certificate Preview -->
+<dialog
+  id="cert-preview-dialog"
+  closedby="any"
+  aria-labelledby="cert-dialog-title"
+  class="m-auto w-[92vw] max-w-2xl rounded-3xl border border-brand-sage/40 bg-white p-0 shadow-2xl backdrop:bg-brand-forest/70 backdrop:backdrop-blur-sm"
+>
+  <div class="flex flex-col max-h-[90vh]">
+    <!-- Header -->
+    <div class="flex items-center justify-between border-b border-brand-sage/30 px-6 py-4">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-700 border border-emerald-200">
+            <BadgeCheck size={12} class="text-emerald-600" aria-hidden="true" />
+            {t(locale, "trust.cert.verified")}
+          </span>
+          <span id="cert-dialog-authority" class="text-xs text-brand-muted"></span>
+        </div>
+        <h3 id="cert-dialog-title" class="mt-1 text-xl font-bold text-brand-forest"></h3>
+        <p id="cert-dialog-reg" class="text-xs font-mono font-medium text-brand-leaf"></p>
+      </div>
+      <form method="dialog">
+        <button
+          type="submit"
+          class="rounded-full p-2 text-brand-muted hover:bg-brand-sage/20 hover:text-brand-forest transition cursor-pointer"
+          aria-label={t(locale, "trust.cert.close")}
+        >
+          <X size={20} aria-hidden="true" />
+        </button>
+      </form>
+    </div>
+
+    <!-- Body / Image Preview -->
+    <div class="overflow-y-auto p-6 bg-brand-cream/30 flex items-center justify-center">
+      <div class="overflow-hidden rounded-2xl border border-brand-sage/40 bg-white shadow-md max-w-full">
+        <img
+          id="cert-dialog-img"
+          src=""
+          alt=""
+          class="max-h-[58vh] w-auto max-w-full object-contain mx-auto"
+        />
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="flex flex-wrap items-center justify-between gap-3 border-t border-brand-sage/30 bg-white px-6 py-4">
+      <div class="flex items-center gap-2">
+        <a
+          id="cert-dialog-download"
+          href=""
+          download=""
+          class="inline-flex items-center gap-2 rounded-lg bg-brand-green px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-forest transition"
+        >
+          <Download size={15} aria-hidden="true" />
+          {t(locale, "trust.cert.download")}
+        </a>
+        <a
+          id="cert-dialog-raw"
+          href=""
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 rounded-lg border border-brand-sage/60 bg-white px-3.5 py-2 text-sm font-semibold text-brand-forest hover:bg-brand-cream transition"
+        >
+          <ExternalLink size={14} aria-hidden="true" />
+          {t(locale, "trust.cert.openNewTab")}
+        </a>
+      </div>
+      <form method="dialog">
+        <button
+          type="submit"
+          class="rounded-lg border border-transparent px-4 py-2 text-sm font-semibold text-brand-muted hover:bg-brand-sage/20 hover:text-brand-forest transition cursor-pointer"
+        >
+          {t(locale, "trust.cert.close")}
+        </button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  function setupCertDialog() {
+    const dialog = document.getElementById(
+      "cert-preview-dialog",
+    ) as HTMLDialogElement | null;
+    if (!dialog) return;
+
+    const titleEl = document.getElementById("cert-dialog-title");
+    const regEl = document.getElementById("cert-dialog-reg");
+    const authorityEl = document.getElementById("cert-dialog-authority");
+    const imgEl = document.getElementById("cert-dialog-img") as HTMLImageElement | null;
+    const downloadEl = document.getElementById(
+      "cert-dialog-download",
+    ) as HTMLAnchorElement | null;
+    const rawEl = document.getElementById(
+      "cert-dialog-raw",
+    ) as HTMLAnchorElement | null;
+    let previousBodyOverflow = "";
+    let previousHtmlOverflow = "";
+
+    const lockPageScroll = () => {
+      previousBodyOverflow = document.body.style.overflow;
+      previousHtmlOverflow = document.documentElement.style.overflow;
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    };
+
+    const unlockPageScroll = () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+
+    dialog.addEventListener("close", unlockPageScroll);
+
+    // Light-dismiss fallback for browsers without native closedby support
+    if (!("closedBy" in HTMLDialogElement.prototype)) {
+      dialog.addEventListener("click", (event) => {
+        if (event.target !== dialog) return;
+        const rect = dialog.getBoundingClientRect();
+        const isDialogContent =
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width;
+        if (!isDialogContent) {
+          dialog.close();
+        }
+      });
+    }
+
+    const triggers = document.querySelectorAll(".js-cert-trigger");
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const title = trigger.getAttribute("data-cert-title") || "";
+        const reg = trigger.getAttribute("data-cert-reg") || "";
+        const authority = trigger.getAttribute("data-cert-authority") || "";
+        const src = trigger.getAttribute("data-cert-src") || "";
+        const download = trigger.getAttribute("data-cert-download") || "";
+
+        if (titleEl) titleEl.textContent = title;
+        if (regEl) regEl.textContent = reg;
+        if (authorityEl) authorityEl.textContent = authority;
+        if (imgEl) {
+          imgEl.src = src;
+          imgEl.alt = `${title} document`;
+        }
+        if (downloadEl) {
+          downloadEl.href = src;
+          downloadEl.download = download;
+        }
+        if (rawEl) {
+          rawEl.href = src;
+        }
+
+        dialog.showModal();
+        lockPageScroll();
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupCertDialog);
+  } else {
+    setupCertDialog();
+  }
+  document.addEventListener("astro:page-load", setupCertDialog);
+</script>
